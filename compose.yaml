@@ -1,0 +1,51 @@
+
+version: '3.4'
+
+networks:
+  demoblazorapp:
+
+services:
+  demoappdb:
+    container_name: app-db
+    image: postgres:latest
+    ports:
+      - 5000:5432
+    environment:
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=DemoBlazorApp
+    networks:
+      - demoblazorapp
+
+  demoblazorserverapp:
+    container_name: demo-blazor-app
+    image: dungdeveloper777/demoblazorserverapp
+    build:
+      context: .
+      dockerfile: ServerApi/Dockerfile
+    ports:
+      - 5218:8080
+    depends_on:
+      - demoappdb
+    environment:
+      - DB_HOST=demoappdb
+      - DB_NAME=DemoBlazorApp
+      - DB_SA_PASSWORD=1234
+      - ConnectionStrings__DefaultConnection=Host=demoappdb;Port=5432;Database=DemoBlazorApp;Username=postgres;Password=1234
+    networks:
+      - demoblazorapp
+  frontend:
+    container_name: frontends-web-build
+    image: dungdeveloper777/frontend
+    build:
+      context: .
+      dockerfile: Asp.NetProject/Dockerfile
+    ports:
+      - 5333:8080
+    depends_on:
+      - demoappdb
+    environment:
+      - DB_HOST=demoappdb
+      - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - demoblazorapp
