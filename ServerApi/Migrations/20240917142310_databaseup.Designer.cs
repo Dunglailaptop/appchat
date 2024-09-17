@@ -12,8 +12,8 @@ using ServerApi.Data;
 namespace ServerApi.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20240915034611_ver6")]
-    partial class ver6
+    [Migration("20240917142310_databaseup")]
+    partial class databaseup
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -342,6 +342,40 @@ namespace ServerApi.Migrations
                     b.HasKey("IdPermisson");
 
                     b.ToTable("Perrmissons");
+                });
+
+            modelBuilder.Entity("ServerApi.Model.RefreshToken", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("ExpiredAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("IsRevoked")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsUsed")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("IssuedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("JwtId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("token")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RefreshTokens");
                 });
 
             modelBuilder.Entity("ServerApi.Model.Roles", b =>
