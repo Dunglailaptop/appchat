@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ServerApi.Data;
 using ServerApi.Services;
@@ -12,13 +13,14 @@ namespace ServerApi.Controllers
     [ApiController]
     public class AccountController: ControllerBase
     {
-         private readonly AccountRepository _AccountRepository;
-         public AccountController(AccountRepository accountRepository)
+         private readonly IAccountRepository _AccountRepository;
+         public AccountController(IAccountRepository accountRepository)
          {
            _AccountRepository = accountRepository;
          }
          
          [HttpGet]
+         [Authorize]
          public IActionResult GetAll()
          {
             try {

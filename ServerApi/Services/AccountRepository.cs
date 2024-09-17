@@ -10,6 +10,7 @@ namespace ServerApi.Services
     public class AccountRepository : IAccountRepository
     {
         private readonly ApplicationDBContext _applicationDBContext;
+        
 
         public AccountRepository(ApplicationDBContext applicationDBContext){
             _applicationDBContext = applicationDBContext;
@@ -26,7 +27,7 @@ namespace ServerApi.Services
 
         public List<Account> GetAll()
         {
-            throw new NotImplementedException();
+            return _applicationDBContext.Account.ToList();
         }
 
         public Account GetById(int id)
