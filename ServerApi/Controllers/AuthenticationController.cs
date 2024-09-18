@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ServerApi.Data;
 using ServerApi.Model;
@@ -22,21 +23,30 @@ namespace  ServerApi.Controllers
         }
 
         [HttpPost("Login")]
-        public IActionResult Login(LoginModel loginModel) {
-           var user = _authenticationrepository.Login(loginModel);
+        public async Task<IActionResult> Login(LoginModel loginModel) {
+           var user =  _authenticationrepository.Login(loginModel);
              if (user == null) {
                   return Ok(new ApiResponse{
                       Success = false,
                       Message = "Không tìm thấy tài khoản"
                   });
              }  
+             var token = await _authenticationrepository.generatekey(user);
              return Ok(new ApiResponse {
                 Success = true,
                 Message = "Đăng nhập thành công tài khoản",
-                Data = _authenticationrepository.generatekey(user)
+                Data = token
              });
         }
-
+        [HttpPost("RefreshToken")]
+        public async Task<IActionResult> ReFreshToken(TokenModel tokenModel){
+            ApiResponse apiResponse = await _authenticationrepository.RenewToken(tokenModel);
+            if(apiResponse.Success) {
+                return Ok(apiResponse);
+            }else {
+                return BadRequest(apiResponse);
+            }
+        }
 
     }
 }

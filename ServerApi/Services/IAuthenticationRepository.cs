@@ -8,8 +8,10 @@ namespace ServerApi.Services
 {
     public interface IAuthenticationRepository
     {
-        string generatekey(Account account);
-
+        Task<TokenModel> generatekey(Account account);
+        Task<ApiResponse> RenewToken(TokenModel tokenModel);
         Account Login(LoginModel loginModel);
+
+
     }
 }

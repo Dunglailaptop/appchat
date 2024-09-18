@@ -30,7 +30,7 @@ namespace ServerApi.Data
             }
         }
 
-
+        public DbSet<RefreshToken> RefreshTokens {get;set;}
         public DbSet<Account> Account {get;set;}
         public DbSet<InfoAccount> InfoAccounts {get;set;}
         public DbSet<Perrmisson> Perrmissons {get;set;}
