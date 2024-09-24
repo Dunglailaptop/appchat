@@ -18,7 +18,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.Configure<AppSetting>(builder.Configuration.GetSection("AppSetting"));
-
+builder.Services.AddCors();
 
 var dbhost = Environment.GetEnvironmentVariable("DB_HOST");
 var dbName = Environment.GetEnvironmentVariable("DB_NAME");
@@ -77,7 +77,9 @@ builder.Services.AddSwaggerGen(c =>
 
 
 var app = builder.Build();
-
+app.UseCors(options => {
+    options.WithOrigins("http://localhost:5128");
+});
 // Configure the HTTP request pipeline.
 
 app.UseSwagger();
