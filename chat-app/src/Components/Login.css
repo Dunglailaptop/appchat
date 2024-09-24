@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.nav_bar {
+  width: 250px;
+  background-color: whitesmoke;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+}
+
+.lbl_username {
+  display: grid;
+  margin: 10px;
+}
+
+.lbl_password {
+  display: grid;
+  margin: 10px;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+}
+
+.btn button {
+  width: 150px;
+  height: 30px;
+  margin: 10px;
+  background-color: blue;
+  color: white;
+  border-radius: 5px;
+}

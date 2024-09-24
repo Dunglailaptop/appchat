@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './Login.css';
 
 function Login() {
   // Khai báo state để lưu trữ thông tin người dùng
@@ -28,31 +29,37 @@ function Login() {
   };
 
   return (
-    <div style={{ maxWidth: '400px', margin: '0 auto', padding: '1rem' }}>
-      <h2>Login</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Username</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
+    <div className='container'>
+      <div className='nav_bar'>
+          <h2 className='login'>Login</h2>
+          {error && <p style={{ color: 'red' }}>{error}</p>}
+          <form onSubmit={handleSubmit}>
+            <div className='lbl_username'>
+              <label>Username:</label>
+              <input
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+              />
+            </div>
+            <div className='lbl_password'>
+              <label>Password:</label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+            <div className='btn'>
+                <button type="submit">Login</button>
+            </div>
+          
+          </form>
         </div>
-        <div>
-          <label>Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Login</button>
-      </form>
     </div>
+   
   );
 }
 
