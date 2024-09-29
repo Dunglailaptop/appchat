@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate} from "react-router-dom";
 import './Login.css';
+
 
 function Login() {
   // Khai báo state để lưu trữ thông tin người dùng
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate(); // useNavigate hook
 
   // Xử lý khi người dùng submit form
   const handleSubmit = async (event) => {
@@ -21,6 +24,9 @@ function Login() {
 
       // Log dữ liệu trả về từ API ra console
       console.log('Response data:', response.data);
+
+      // Navigate to "/Menu" after successful login
+      navigate('/Menu');  // Programmatically navigate to Menu page
     } catch (err) {
       // Xử lý lỗi nếu có và log lỗi ra console
       setError('Đăng nhập không thành công!');
@@ -29,8 +35,9 @@ function Login() {
   };
 
   return (
-    <div className='container'>
-      <div className='nav_bar'>
+    <>
+      <div className='container'>
+        <div className='nav_bar'>
           <h2 className='login'>Login</h2>
           {error && <p style={{ color: 'red' }}>{error}</p>}
           <form onSubmit={handleSubmit}>
@@ -53,13 +60,15 @@ function Login() {
               />
             </div>
             <div className='btn'>
-                <button type="submit">Login</button>
+              <button type="submit">Login</button>
             </div>
-          
           </form>
         </div>
-    </div>
-   
+      </div>
+      
+      
+      
+    </>
   );
 }
 

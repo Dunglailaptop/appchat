@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ServerApi.Data;
+using ServerApi.Model;
 using ServerApi.Services;
 
 namespace ServerApi.Controllers
@@ -42,6 +44,19 @@ namespace ServerApi.Controllers
             }catch {
                return StatusCode(StatusCodes.Status500InternalServerError);
             }
+         }
+         [HttpPost("CreateAccount")]
+         public IActionResult CreateAccount(Account account){
+              try {
+                Account accresponse = _AccountRepository.Add(account);
+                if(accresponse != null){
+                  return Ok(accresponse);
+                }else {
+                  return BadRequest("Khong tao duoc tai khoan");
+                }
+              }catch {
+               return StatusCode(StatusCodes.Status500InternalServerError);
+              }
          }
         
     }
