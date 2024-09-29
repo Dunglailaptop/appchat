@@ -13,6 +13,7 @@ using ServerApi.Data;
 using ServerApi.Model;
 using System.Security.Cryptography;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel;
 
 namespace ServerApi.Services
 {
@@ -26,10 +27,11 @@ namespace ServerApi.Services
             _applicationDBcontext = applicationDBContext;
         }
 
+     
 
         private async Task<TokenModel> generatekeys(Account account)
         {
-            Console.WriteLine(_appsetting.SecretKey);
+            
             var jwtTokenHandler = new JwtSecurityTokenHandler();
             var secretKeyBytes = Encoding.UTF8.GetBytes(_appsetting.SecretKey);
 
@@ -64,6 +66,13 @@ namespace ServerApi.Services
             };
             await _applicationDBcontext.AddAsync(refreshtokenentity);
             await _applicationDBcontext.SaveChangesAsync();
+            // kiem tra xem nguoi dung da dang nhap o noi nao khac khong
+            var AccountUpdate = await _applicationDBcontext.Account.FindAsync(account.IdAccount);
+            AccountUpdate.status = true;
+            _applicationDBcontext.Account.Update(AccountUpdate);
+            _applicationDBcontext.SaveChangesAsync();
+
+
             return new TokenModel
             {
                 AccessToken = accesstoken,

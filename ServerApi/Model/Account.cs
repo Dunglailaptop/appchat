@@ -23,7 +23,7 @@ namespace ServerApi.Model
         public DateTime dataUpdate {get;set;}  
         
         public bool Enable {get;set;}
-        public bool status { get; set; }
+        public bool status { get; set; }    
 
     }
 

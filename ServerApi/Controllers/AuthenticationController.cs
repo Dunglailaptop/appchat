@@ -30,7 +30,12 @@ namespace  ServerApi.Controllers
                       Success = false,
                       Message = "Không tìm thấy tài khoản"
                   });
-             }  
+             }else if (user.status == true) {
+                  return Ok(new ApiResponse{
+                      Success = false,
+                      Message = "Tài khoản đã đăng nhập nơi khác"
+                  });
+             } 
              var token = await _authenticationrepository.generatekey(user);
              return Ok(new ApiResponse {
                 Success = true,
