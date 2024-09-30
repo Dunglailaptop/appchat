@@ -27,11 +27,11 @@ namespace ServerApi.Services
             _applicationDBcontext = applicationDBContext;
         }
 
-     
+
 
         private async Task<TokenModel> generatekeys(Account account)
         {
-            
+
             var jwtTokenHandler = new JwtSecurityTokenHandler();
             var secretKeyBytes = Encoding.UTF8.GetBytes(_appsetting.SecretKey);
 
@@ -171,7 +171,7 @@ namespace ServerApi.Services
                 storeToken.IsUsed = true;
                 _applicationDBcontext.Update(storeToken);
                 await _applicationDBcontext.SaveChangesAsync();
-                var user = await _applicationDBcontext.Account.FirstOrDefaultAsync(nd=>nd.IdAccount == storeToken.UserId);
+                var user = await _applicationDBcontext.Account.FirstOrDefaultAsync(nd => nd.IdAccount == storeToken.UserId);
                 var token = await generatekeys(user);
                 return new ApiResponse
                 {
@@ -208,9 +208,33 @@ namespace ServerApi.Services
             return user;
         }
 
+        public async Task<ApiResponse> Logout(int id)
+        {
+            Account account = await _applicationDBcontext.Account.FindAsync(id);
+            ApiResponse apiResponse = new ApiResponse();
+            if (account.status == true)
+            {
+                account.status = false;
+                _applicationDBcontext.Account.Update(account);
+                _applicationDBcontext.SaveChangesAsync();
+                return new ApiResponse
+                {
+                    Data = null,
+                    Success = true,
+                    Message = "Dang xuat thanh cong"
+                };
+            } 
+            return new ApiResponse
+            {
+                Data = null,
+                Success = false,
+                Message = "Tai khoan khong hop le"
+            };
+        }
+
         public async Task<ApiResponse> RenewToken(TokenModel tokenModel)
         {
-             return await RenewRefreshToken(tokenModel);
+            return await RenewRefreshToken(tokenModel);
 
         }
     }

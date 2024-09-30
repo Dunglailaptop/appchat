@@ -53,5 +53,14 @@ namespace  ServerApi.Controllers
             }
         }
 
+        [HttpPost("Logout")]
+        public async Task<IActionResult> LogoutAccount(int idacc) {
+           ApiResponse apiResponse = await _authenticationrepository.Logout(idacc);
+           if(apiResponse.Success) {
+              return Ok(apiResponse);
+           }
+        return BadRequest(apiResponse);
+        }
+         
     }
 }
