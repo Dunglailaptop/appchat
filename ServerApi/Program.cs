@@ -36,7 +36,8 @@ builder.Services.AddDbContext<ApplicationDBContext>(option =>
 );
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 builder.Services.AddScoped<IAuthenticationRepository, AuthenticationRepository>();
-
+builder.Services.AddSingleton<TimeService>();
+builder.Services.AddHostedService<TimeService>();
 var getkey = builder.Configuration["AppSetting:SecretKey"];
 var securityKey = Encoding.UTF8.GetBytes(getkey);
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>

@@ -26,11 +26,16 @@ namespace  ServerApi.Controllers
         public async Task<IActionResult> Login(LoginModel loginModel) {
            var user =  _authenticationrepository.Login(loginModel);
              if (user == null) {
-                  return Ok(new ApiResponse{
+                  return BadRequest(new ApiResponse{
                       Success = false,
                       Message = "Không tìm thấy tài khoản"
                   });
-             }  
+             }else if (user.status == true) {
+                  return BadRequest(new ApiResponse{
+                      Success = false,
+                      Message = "Tài khoản đã đăng nhập nơi khác"
+                  });
+             } 
              var token = await _authenticationrepository.generatekey(user);
              return Ok(new ApiResponse {
                 Success = true,
@@ -48,5 +53,14 @@ namespace  ServerApi.Controllers
             }
         }
 
+        [HttpPost("Logout")]
+        public async Task<IActionResult> LogoutAccount(int idacc) {
+           ApiResponse apiResponse = await _authenticationrepository.Logout(idacc);
+           if(apiResponse.Success) {
+              return Ok(apiResponse);
+           }
+        return BadRequest(apiResponse);
+        }
+         
     }
 }

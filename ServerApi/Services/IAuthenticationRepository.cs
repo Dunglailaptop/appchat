@@ -11,7 +11,8 @@ namespace ServerApi.Services
         Task<TokenModel> generatekey(Account account);
         Task<ApiResponse> RenewToken(TokenModel tokenModel);
         Account Login(LoginModel loginModel);
-
-
+        
+        Task<ApiResponse> Logout(int id);
+         
     }
 }
