@@ -1,34 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Appchar\\appchat\\ServerApi\\ServerApi.csproj": {}
+    "/Users/nguyenxuantiendung/Documents/webchat/appchat/ServerApi/ServerApi.csproj": {}
   },
   "projects": {
-    "D:\\Appchar\\appchat\\ServerApi\\ServerApi.csproj": {
+    "/Users/nguyenxuantiendung/Documents/webchat/appchat/ServerApi/ServerApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Appchar\\appchat\\ServerApi\\ServerApi.csproj",
+        "projectUniqueName": "/Users/nguyenxuantiendung/Documents/webchat/appchat/ServerApi/ServerApi.csproj",
         "projectName": "ServerApi",
-        "projectPath": "D:\\Appchar\\appchat\\ServerApi\\ServerApi.csproj",
-        "packagesPath": "C:\\Users\\CNTT\\.nuget\\packages\\",
-        "outputPath": "D:\\Appchar\\appchat\\ServerApi\\obj\\",
+        "projectPath": "/Users/nguyenxuantiendung/Documents/webchat/appchat/ServerApi/ServerApi.csproj",
+        "packagesPath": "/Users/nguyenxuantiendung/.nuget/packages/",
+        "outputPath": "/Users/nguyenxuantiendung/Documents/webchat/appchat/ServerApi/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "D:\\cafe\\DevExpress\\Components\\Offline Packages",
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\CNTT\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.2.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/nguyenxuantiendung/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "D:\\cafe\\DevExpress\\Components\\System\\Components\\Packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -100,7 +91,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.302/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

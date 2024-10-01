@@ -58,18 +58,18 @@ namespace ServerApi.Controllers
          }
       }
       [HttpPost("CreateAccount")]
-      public IActionResult CreateAccount(Account account)
+      public async Task<IActionResult> CreateAccount(Account account)
       {
          try
          {
-            Account accresponse = _AccountRepository.Add(account);
+            ApiResponse accresponse = await _AccountRepository.Add(account);
             if (accresponse != null)
             {
                return Ok(accresponse);
             }
             else
             {
-               return BadRequest("Khong tao duoc tai khoan");
+               return BadRequest(accresponse);
             }
          }
          catch
