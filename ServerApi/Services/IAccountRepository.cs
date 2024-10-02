@@ -10,7 +10,7 @@ namespace ServerApi.Services
     {
         List<Account> GetAll();
         Account GetById(int id);
-        Account Add(Account account);
+        Task<ApiResponse> Add(Account account);
         
         void Update(Account account);
 
