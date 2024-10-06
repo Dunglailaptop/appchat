@@ -2,50 +2,56 @@
 version: '3.4'
 
 networks:
-  demoblazorapp:
+  webapp:
 
 services:
-  demoappdb:
+  DatabasePortgresql:
     container_name: app-db
     image: postgres:latest
     ports:
-      - 5000:5432
+      - 5222:5432
     environment:
       - POSTGRES_PASSWORD=1234
       - POSTGRES_USER=postgres
-      - POSTGRES_DB=DemoBlazorApp
+      - POSTGRES_DB=ChatApp
     networks:
-      - demoblazorapp
+      - webapp
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
-  demoblazorserverapp:
-    container_name: demo-blazor-app
-    image: dungdeveloper777/demoblazorserverapp
+
+  backend-chatapp:
+    container_name: backend-chatapp
+    image: dungdeveloper777/backend-chatapp
     build:
       context: .
       dockerfile: ServerApi/Dockerfile
     ports:
-      - 5218:8080
+      - 4600:8080
     depends_on:
-      - demoappdb
+      - DatabasePortgresql
     environment:
-      - DB_HOST=demoappdb
-      - DB_NAME=DemoBlazorApp
+      - DB_HOST=DatabasePortgresql
+      - DB_NAME=ChatApp
       - DB_SA_PASSWORD=1234
-      - ConnectionStrings__DefaultConnection=Host=demoappdb;Port=5432;Database=DemoBlazorApp;Username=postgres;Password=1234
+      - ConnectionStrings__DefaultConnection=Host=DatabasePortgresql;Port=5432;Database=ChatApp;Username=postgres;Password=1234
     networks:
-      - demoblazorapp
-  frontend:
-    container_name: frontends-web-build
-    image: dungdeveloper777/frontend
-    build:
-      context: .
-      dockerfile: Asp.NetProject/Dockerfile
-    ports:
-      - 5333:8080
-    depends_on:
-      - demoappdb
-    environment:
-      - DB_HOST=demoappdb
-      - ASPNETCORE_ENVIRONMENT=Development
-    networks:
-      - demoblazorapp
+      - webapp
+  # frontend:
+  #   container_name: frontends-web-build
+  #   image: dungdeveloper777/frontend
+  #   build:
+  #     context: .
+  #     dockerfile: Asp.NetProject/Dockerfile
+  #   ports:
+  #     - 5333:8080
+  #   depends_on:
+  #     - demoappdb
+  #   environment:
+  #     - DB_HOST=demoappdb
+  #     - ASPNETCORE_ENVIRONMENT=Development
+  #   networks:
+  #     - demoblazorapp
