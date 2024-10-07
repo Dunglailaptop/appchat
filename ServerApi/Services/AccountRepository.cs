@@ -34,7 +34,7 @@ namespace ServerApi.Services
                     account1.status = false;
                     account1.CodeAccount = Helpers.GenerateCode();
                     _applicationDBContext.Account.Add(account1);
-                    _applicationDBContext.SaveChange();
+                    _applicationDBContext.SaveChangesAsync();
                     return new ApiResponse
                     {
                         Message = "Tao tai khoan thanh cong",
