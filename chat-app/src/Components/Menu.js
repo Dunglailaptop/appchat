@@ -1,9 +1,10 @@
 import React from "react";
+import NavBar from "./NavBar";
 
 function Menu() {
    return (
     <>
-      <h1>hello User</h1>
+      <NavBar></NavBar>
     </>
    );
 }

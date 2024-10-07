@@ -1,54 +1,52 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
+import { Button, notification, Space } from "antd";
+import { saveCookie, sleep } from "./Helper";
 import "./Login.css";
-import { saveCookie } from "./Helper";
-
+import { openNotification } from "./Notifacation";
 
 
 function Login() {
-  // Khai báo state để lưu trữ thông tin người dùng
+  // Khai báo state để lưu thông tin người dùng và xử lý lỗi
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate(); // useNavigate hook
-  
+  const navigate = useNavigate(); // Dùng hook useNavigate để điều hướng
 
-  
-  // Xử lý khi người dùng submit form
+  // Sử dụng hook useNotification của Ant Design
+  const [api,contextHolder] = notification.useNotification();
+  // Xử lý sự kiện submit form
   const handleSubmit = async (event) => {
-    event.preventDefault(); // Ngăn form reload
-
+    event.preventDefault();
     try {
-      // Gửi yêu cầu POST tới API
       const response = await axios.post(
         "http://localhost:5128/api/Authentication/Login",
         {
-          username, // Truyền username
-          password, // Truyền password
+          username,
+          password,
         }
       );
-
-      // Log dữ liệu trả về từ API ra console
-      console.log("Response data:", response.data);
-      const { message, success, data } = response.data;
-      const { accessToken, refreshToken } = data;
+      const { success, data } = response.data;
       if (success) {
-        saveCookie("authTokenS", refreshToken, accessToken, 1);
-        navigate("/Menu");
+        const { accessToken, refreshToken } = data;
+        saveCookie("authTokenS", refreshToken, accessToken, 30);
+        const names = 'Dungct'
+        openNotification(api,"Đăng nhập thành công", `Chào mừng ${names} tới nhóm chat kín`);
+        await sleep(1000); 
+        navigate("/Menu"); // Điều hướng sau khi đăng nhập thành công
       }
-      // Navigate to "/Menu" after successful login
-      // Programmatically navigate to Menu page
     } catch (err) {
-      // Xử lý lỗi nếu có và log lỗi ra console
       setError("Đăng nhập không thành công!");
+      openNotification(api,"Đăng nhập thất bại", "Tên đăng nhập hay mật khẩu bị sai");
       console.error("Login Error:", err);
     }
   };
 
   return (
     <>
+      {contextHolder} {/* Phải có contextHolder để hiển thị thông báo */}
       <div className="container">
         <div className="nav_bar">
           <h2 className="login">Login</h2>
@@ -73,7 +71,9 @@ function Login() {
               />
             </div>
             <div className="btn">
-              <button type="submit">Login</button>
+              <Button type="primary" htmlType="submit">
+                Login
+              </Button>
             </div>
           </form>
         </div>

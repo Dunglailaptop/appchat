@@ -1,5 +1,9 @@
 import Cookies from 'js-cookie';
 
+
+
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
 export const saveCookie = (name, value1, value2, minutes) => {
   const value = { val1: value1, val2: value2 }; // Đóng gói hai giá trị vào một đối tượng
   const expires = minutes / (24 * 60); // Chuyển phút thành ngày
@@ -12,3 +16,10 @@ export const getCookie = (name) => {
   const cookie = Cookies.get(name);
   return cookie ? JSON.parse(cookie) : null;
 };
+
+// Hàm để xóa cookie
+export const removeCookie = (name) => {
+  Cookies.remove(name);
+};
+
+export {sleep};
