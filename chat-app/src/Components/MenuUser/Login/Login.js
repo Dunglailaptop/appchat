@@ -31,7 +31,7 @@ function Login() {
       const { success, data } = response.data;
       if (success) {
         const { accessToken, idRole, username } = data;
-        saveCookie("authTokenS", idRole, username, 30);
+        saveCookie("authTokenS", idRole, username, accessToken, 30);
         openNotification(api,"Đăng nhập thành công", `Chào mừng ${username} tới nhóm chat kín`);
         await sleep(1000); 
         navigate("/Menu"); // Điều hướng sau khi đăng nhập thành công

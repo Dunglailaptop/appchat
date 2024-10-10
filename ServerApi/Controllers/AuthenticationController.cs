@@ -36,7 +36,9 @@ namespace  ServerApi.Controllers
                 Success = true,
                 Message = "Đăng nhập thành công tài khoản",
                 Data = new {
-                    accessToken = token,
+                    accessToken = new {
+                        AccessToken = token.AccessToken,
+                    },
                     IdRole = user.IdRole,
                     Username = user.Username
                 }

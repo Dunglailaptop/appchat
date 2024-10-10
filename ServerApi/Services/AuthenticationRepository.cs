@@ -75,8 +75,8 @@ namespace ServerApi.Services
 
             return new TokenModel
             {
-                AccessToken = accesstoken,
-                RefreshToken = refreshtoken
+                AccessToken = accesstoken
+                // RefreshToken = refreshtoken
             };
         }
         private string GenerateRefreshToken()

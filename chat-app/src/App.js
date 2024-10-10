@@ -15,7 +15,7 @@ const App = () => {
     console.log("🚀 ~ useEffect ~ authen:", authen.val1)
     }
     if (authen != null) {
-      if(authen.val1 == "0") {
+      if(authen.val1 == "2") {
         navigate('/Menu'); // Nếu có authToken thì điều hướng đến /Menu
       }else {
         navigate('/MenuAdmin'); // Nếu có authToken thì điều hướng đến /Menu

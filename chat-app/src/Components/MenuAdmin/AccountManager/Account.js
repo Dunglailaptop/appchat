@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { Button, Form, Input, Popconfirm, Table } from "antd";
 import BarSreach from "../../MenuUser/Sreach/BarSreach";
 import "./Account.css";
+import { getCookie } from "../../MenuUser/Helper/Helper";
 
 const EditableContext = React.createContext(null);
 const EditableRow = ({ index, ...props }) => {
@@ -80,21 +81,42 @@ const EditableCell = ({
   }
   return <td {...restProps}>{childNode}</td>;
 };
+const fetchData = async () => {
+  const token = getCookie("authTokenS"); // Lấy token từ cookie
+  
+  if (token) {
+    const {accessToken} = token.val3;
+    console.log("Token từ cookie:", token.val3);
+
+    try {
+      const response = await fetch("http://localhost:5128/api/Account", {
+        method: "GET",
+        headers: {
+         'Authorization': `Bearer ${accessToken}`,  // Bearer + token.val3
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      return data;
+      console.log("Dữ liệu nhận được:", data);
+    } catch (error) {
+      console.error("Lỗi khi gửi yêu cầu:", error);
+      return null;
+    }
+  } else {
+    return null;
+    console.log("Không tìm thấy token trong cookie");
+  }
+};
+
 const Account = () => {
-  const [dataSource, setDataSource] = useState([
-    {
-      key: "0",
-      name: "Edward King 0",
-      age: "32",
-      address: "London, Park Lane no. 0",
-    },
-    {
-      key: "1",
-      name: "Edward King 1",
-      age: "32",
-      address: "London, Park Lane no. 1",
-    },
-  ]);
+  fetchData();
+  const [dataSource, setDataSource] = useState([]);
   const [count, setCount] = useState(2);
   const handleDelete = (key) => {
     const newData = dataSource.filter((item) => item.key !== key);
@@ -102,29 +124,28 @@ const Account = () => {
   };
   const defaultColumns = [
     {
-      title: "Username",
-      dataIndex: "name",
+      title: "Mã tài khoản",
+      dataIndex: "IdAccount",
+    },
+    {
+      title: "Mật khẩu",
+      dataIndex: "Password",
+    },
+    {
+      title: "Tên tài khoản",
+      dataIndex: "Username",
       width: "30%",
-      editable: true,
     },
     {
-      title: "Password",
-      dataIndex: "age",
+      title: "Phân Quyền",
+      dataIndex: "IdRole",
     },
     {
-      title: "FullName",
-      dataIndex: "address",
+      title: "Trạng thái",
+      dataIndex: "status",
     },
     {
-      title: "FullName",
-      dataIndex: "address",
-    },
-    {
-      title: "FullName",
-      dataIndex: "address",
-    },
-    {
-      title: "operation",
+      title: "Chỉnh sửa",
       dataIndex: "operation",
       render: (_, record) =>
         dataSource.length >= 1 ? (
@@ -137,16 +158,7 @@ const Account = () => {
         ) : null,
     },
   ];
-  const handleAdd = () => {
-    const newData = {
-      key: count,
-      name: `Edward King ${count}`,
-      age: "32",
-      address: `London, Park Lane no. ${count}`,
-    };
-    setDataSource([...dataSource, newData]);
-    setCount(count + 1);
-  };
+  const handleAdd = () => {};
   const handleSave = (row) => {
     const newData = [...dataSource];
     const index = newData.findIndex((item) => row.key === item.key);
