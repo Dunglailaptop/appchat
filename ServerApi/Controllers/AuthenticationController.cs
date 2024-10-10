@@ -35,7 +35,11 @@ namespace  ServerApi.Controllers
              return Ok(new ApiResponse {
                 Success = true,
                 Message = "Đăng nhập thành công tài khoản",
-                Data = token
+                Data = new {
+                    accessToken = token,
+                    IdRole = user.IdRole,
+                    Username = user.Username
+                }
              });
         }
         [HttpPost("RefreshToken")]

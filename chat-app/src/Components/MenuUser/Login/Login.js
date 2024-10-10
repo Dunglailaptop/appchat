@@ -3,9 +3,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { Button, notification, Space } from "antd";
-import { saveCookie, sleep } from "./Helper";
+import { saveCookie, sleep } from "../Helper/Helper";
 import "./Login.css";
-import { openNotification } from "./Notifacation";
+import { openNotification } from "../Notifaction/Notifacation";
 
 
 function Login() {
@@ -30,10 +30,9 @@ function Login() {
       );
       const { success, data } = response.data;
       if (success) {
-        const { accessToken, refreshToken } = data;
-        saveCookie("authTokenS", refreshToken, accessToken, 30);
-        const names = 'Dungct'
-        openNotification(api,"Đăng nhập thành công", `Chào mừng ${names} tới nhóm chat kín`);
+        const { accessToken, idRole, username } = data;
+        saveCookie("authTokenS", idRole, username, 30);
+        openNotification(api,"Đăng nhập thành công", `Chào mừng ${username} tới nhóm chat kín`);
         await sleep(1000); 
         navigate("/Menu"); // Điều hướng sau khi đăng nhập thành công
       }
