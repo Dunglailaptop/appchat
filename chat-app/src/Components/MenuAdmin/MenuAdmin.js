@@ -94,7 +94,7 @@ const MenuAdmin = () => {
                 minHeight: 280,
               }}
             >
-              <Account></Account>
+             
             </Content>
           </Layout>
         </Content>
