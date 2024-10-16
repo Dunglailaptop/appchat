@@ -1,21 +1,28 @@
-import React from "react";
-
+import React, { useEffect } from "react";
+import {useNavigate} from "react-router-dom"
 
 const Login = () => {
+   
+    const navigate = useNavigate();
+    const ValueCheck = 0;
+    const Role = 0;
+    useEffect(() => {
+        if (ValueCheck == 0) {
+            setTimeout(() => {
+               if(Role == 0){
+                navigate("/Login");
+               }else {
+                navigate("/");
+               }
+            })
+        }
+    })
     return (
-        <div className="flex flex-row justify-evenly items-start min-h-screen bg-primary">
-            <div className="flex flex-col mt-6">
-                <h4 className="text-3xl text-blueCustom font-bold">
-                    Quản lý chất lượng
-                </h4>
-                <h1 className="text-2xl ml-4">Bệnh viện Nhi Đồng 2</h1>
-            </div>
+        <div>
+          
+              <h1>day la trang login</h1>
+           
 
-            <div className="bg-white w-[300px] p-[10px] pb-[20px] rounded-md shadow-sm mt-6">
-                <div className="flex flex-col gap-3">
-                   
-                </div>
-            </div>
         </div>
     );
 };
