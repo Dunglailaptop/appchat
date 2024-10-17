@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.containner_login {
+  display:flex;
+  justify-content: center;
+}
+
+.txtUsername {
+  display: grid;
+ 
+}
+
+.txtPassword {
+  display: grid;
+ 
+}
+
+
+.form_input  {
+  background-color: white;
+  padding: 30px;
+  margin: 20px;
+  border-radius: 5px;
+}
+
+.ipt {
+  background-color:aliceblue;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
+}
+
+#titleLogin {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+}
+
+.btn_buttonlogin {
+  background-color: blue;
+  color: white;
+  margin: 5px 5px 5px 5px;
+  border-radius: 5px;
+  width: 150px;
+}
