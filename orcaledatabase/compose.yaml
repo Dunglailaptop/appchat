@@ -1,0 +1,21 @@
+version: '3'
+services:
+  DatabaseOracle:
+    container_name: app-oracle-db
+    image: gvenzl/oracle-xe
+    ports:
+      - 5222:1521    # Map the Oracle default port 1521 to host's 5222
+    environment:
+      - ORACLE_PASSWORD=1234  # Password for SYS, SYSTEM and PDBADMIN users
+      - ORACLE_DATABASE=ChatApp  # Specify the database name
+    networks:
+      - webapp
+    healthcheck:
+      test: ["CMD-SHELL", "echo 'SELECT 1 FROM dual;' | sqlplus sys/1234@localhost:1521/XEPDB1 as sysdba"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  webapp:
+    driver: bridge
