@@ -1,8 +1,18 @@
 import React from 'react'
+import 'flowbite'
 
 const Login = () => {
   return (
-    <div>Login</div>
+    <>
+
+
+     
+    
+
+    
+     
+
+    </>
   )
 }
 

@@ -5,7 +5,7 @@ const {MdOutlineLibraryMusic,HiLibrary,HiMiniUserGroup,IoMdSettings,TbLogout2,Fa
 
 export const siderbarMenu = [
   {
-     path: "per",
+     path: "ERROR",
      text: "Trang chủ",  
      icons: <HiLibrary size={24}/>
   },
@@ -16,17 +16,17 @@ export const siderbarMenu = [
     icons: <HiMiniUserGroup size={24}/>
   },
   {
-    path: "Pu",
+    path: "ER",
     text: "Cài đặt",  
     icons: <IoMdSettings size={24}/>
  },
  {
-  path: "Login",
+  path: "E",
   text: "Quản lý video",  
   icons: <FaPhotoVideo size={24}/>
 },
 {
-  path: "L3",
+  path: "EOO",
   text: "Quản lý Ảnh",  
   icons: <IoIosImages size={24}/>
 }
