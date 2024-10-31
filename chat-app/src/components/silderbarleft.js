@@ -2,8 +2,8 @@ import React from "react";
 import logo from "../assets/Red Simple Medical Health Logo.png";
 import { siderbarMenu } from "../ultis/menu";
 import { NavLink } from "react-router-dom";
-import 'flowbite'
-import ModalLogout from "../containers/public/ModalLogout";
+import "flowbite";
+import ModalLogout from "../containers/ModalDialog/ModalLogout";
 
 
 const noneactive = "py-2 px-[25px] font-bold text-[#32323D] text-[13px] flex gap-[12px] items-center"

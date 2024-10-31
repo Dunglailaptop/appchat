@@ -7,11 +7,11 @@ import {
 
 const Public = () => {
   return (
-    <div className="w-full flex">
+    <div className="w-full flex overflow-hidden">
       <div className="w-[240px] flex-none bg-white border-r-indigo-600">
         <Left />
       </div>
-      <div className="flex-auto bg-gray-50 min-h-screen">
+      <div className="w-[960px] flex-auto bg-gray-50 min-h-screen">
         <Outlet></Outlet>
       </div>
   

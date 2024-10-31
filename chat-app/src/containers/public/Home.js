@@ -1,6 +1,6 @@
 import React from "react";
 import 'flowbite'
-import ModalDialog from "./ModalDialog";
+import ModalDialog from "../ModalDialog/ModalDialog";
 
 const Home = () => {
   return (

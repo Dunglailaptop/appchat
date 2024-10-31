@@ -1,5 +1,5 @@
-import React from 'react'
-import 'flowbite'
+import React from 'react';
+import 'flowbite';
 
 const ModalLogout = () => {
     return (
