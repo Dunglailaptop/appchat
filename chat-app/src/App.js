@@ -3,6 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Home, Public, Login, PageError } from "./containers/public";
+import { Prescription,Invoiceinpaient,Invoiceoutpatient,Patient } from "./containers/private";
 import { Route, Routes } from "react-router";
 import path from "./ultis/path";
 
@@ -17,6 +18,7 @@ function App() {
             <Route path={path.HOME} element={<Home></Home>}></Route>
             <Route path={path.LOGIN} element={<Login></Login>}></Route>
             <Route path={path.ERROR} element={<PageError></PageError>}></Route>
+            <Route path={path.patient} element={<Patient></Patient>}></Route>
           </Route>
         </Routes>
       </div>
