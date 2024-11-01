@@ -1,5 +1,5 @@
 const actionTypes = {
-  GET_HOME: "GET_HOME"
+  GET_PATIENT: "GET_PATIENT"
 }
 
 export default actionTypes;

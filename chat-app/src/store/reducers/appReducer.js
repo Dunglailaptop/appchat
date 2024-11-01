@@ -1,17 +1,20 @@
-import actionTypes from "../actions/actionTypes"
+import actionTypes from "../actions/actionTypes";
 
 const initState = {
-  homedata: [],
-  test: "hello 123"
-}
+  banner: [],
+};
 
-const appReducer = (state =  initState,action) => {
-  switch(action.type) {
-     case actionTypes.GET_HOME:
-         return state
-     default:
-         return state;
+const appReducer = (state = initState, action) => {
+  switch (action.type) {
+    case actionTypes.GET_PATIENT:
+     
+      return {
+        ...state,
+        banner: action.Patientdata,
+      };
+    default:
+      return state;
   }
-}
+};
 
 export default appReducer;

@@ -1,0 +1,6 @@
+@ServerApiDataBVND2_HostAddress = http://localhost:5124
+
+GET {{ServerApiDataBVND2_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -89,7 +89,7 @@ export const MenuTablePatient = [
 export const datatest = [
   {
     MaBenhNhan: "79408",
-    TenBenhNhan: "",
+    TenBenhNhan: "Nguyen xuan tien dung",
     NgaySinh: "21022732",
     TenMe: "ru",
     TenBo: "tyu",
@@ -99,5 +99,44 @@ export const datatest = [
     QuocTich: "tyu",
     GioiTinh: "tyu",
     DiaChi: "tyu"
-  }
+  },
+  {
+    MaBenhNhan: "79408",
+    TenBenhNhan: "Nguyen xuan tien dung",
+    NgaySinh: "21022732",
+    TenMe: "ru",
+    TenBo: "tyu",
+    SDTMe: "tyu",
+    SDTBo: "yu",
+    DanToc: "tyu",
+    QuocTich: "tyu",
+    GioiTinh: "tyu",
+    DiaChi: "tyu"
+  },
+  {
+    MaBenhNhan: "79408",
+    TenBenhNhan: "Nguyen xuan tien dung",
+    NgaySinh: "21022732",
+    TenMe: "ru",
+    TenBo: "tyu",
+    SDTMe: "tyu",
+    SDTBo: "yu",
+    DanToc: "tyu",
+    QuocTich: "tyu",
+    GioiTinh: "tyu",
+    DiaChi: "tyu"
+  },
+  {
+    MaBenhNhan: "79408",
+    TenBenhNhan: "Nguyen xuan tien dung",
+    NgaySinh: "21022732",
+    TenMe: "ru",
+    TenBo: "tyu",
+    SDTMe: "tyu",
+    SDTBo: "yu",
+    DanToc: "tyu",
+    QuocTich: "tyu",
+    GioiTinh: "tyu",
+    DiaChi: "tyu"
+  },
 ];

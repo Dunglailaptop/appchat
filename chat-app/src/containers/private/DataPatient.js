@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "flowbite";
 import ModalDialog from "../ModalDialog/ModalDialog";
 import { datatest, MenuTablePatient } from "../../ultis/menu";
+import icon from "../../ultis/icons";
+import * as api from "../../Apis";
+import { useDispatch, useSelector } from "react-redux";
+import actionTypes from "../../store/actions/actionTypes";
+import * as action from "../../store/actions/ApiDataPatient";
+
+const { FaAngleRight, FaAngleLeft, CiSearch } = icon;
 
 const classNameTitleTable =
   "px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left";
@@ -9,6 +16,18 @@ const classNameInfoTable =
   "border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4";
 
 const DataPatient = () => {
+  const dispatch = useDispatch();
+
+  // Lấy dữ liệu từ store, sẽ tự động cập nhật mỗi khi store thay đổi
+  const Patientdata = useSelector((state) => state.app.banner || []);
+
+  useEffect(() => {
+    // Gọi API và cập nhật store
+    dispatch(action.getdata());
+  }, [dispatch]);
+
+  
+
   return (
     <>
       <section class="py-1 bg-blueGray-50">
@@ -21,15 +40,50 @@ const DataPatient = () => {
                     Danh sách tài khoản
                   </h3>
                 </div>
+
                 <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
-                  <button
-                    data-modal-target="crud-modal"
-                    data-modal-toggle="crud-modal"
-                    class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="button"
+                  <nav
+                    aria-label="Pagination"
+                    className="isolate inline-flex -space-x-px rounded-md shadow-sm"
                   >
-                    Tạo mới tài khoản
-                  </button>
+                    <a
+                      href="#"
+                      className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+                    >
+                      <span className="sr-only">Previous</span>
+                      <FaAngleLeft></FaAngleLeft>
+                    </a>
+                    {/* Current: "z-10 bg-indigo-600 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", Default: "text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0" */}
+                    <a
+                      href="#"
+                      aria-current="page"
+                      className="relative z-10 inline-flex items-center bg-indigo-600 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    >
+                      1/1880880
+                    </a>
+
+                    <a
+                      href="#"
+                      className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+                    >
+                      <span className="sr-only">Next</span>
+                      <FaAngleRight></FaAngleRight>
+                    </a>
+                  </nav>
+                </div>
+                <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
+                  <label class="relative block">
+                    <span class="sr-only">Search</span>
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+                      <CiSearch></CiSearch>
+                    </span>
+                    <input
+                      class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+                      placeholder="Search for anything..."
+                      type="text"
+                      name="search"
+                    />
+                  </label>
                 </div>
               </div>
             </div>
@@ -45,34 +99,30 @@ const DataPatient = () => {
                 </thead>
 
                 <tbody>
-                  {datatest.map((item) => (
-                    <>
-                      <tr>
-                        <td className={classNameInfoTable}>
-                          {item.MaBenhNhan}
-                        </td>
-
-                        <td className={classNameInfoTable}>
-                          {item.TenBenhNhan}
-                        </td>
-
-                        <td className={classNameInfoTable}>{item.DiaChi}</td>
-
-                        <td className={classNameInfoTable}>{item.GioiTinh}</td>
-
-                        <td className={classNameInfoTable}>{item.TenBo}</td>
-
-                        <td className={classNameInfoTable}>{item.TenMe}</td>
-
-                        <td className={classNameInfoTable}>{item.SDTMe}</td>
-
-                        <td className={classNameInfoTable}>{item.SDTBo}</td>
-
-                        <td className={classNameInfoTable}>{item.NgaySinh}</td>
-
-                        <td className={classNameInfoTable}>{item.DiaChi}</td>
-                      </tr>
-                    </>
+                  {Patientdata.map((patient, index) => (
+                    <tr key={index}>
+                      <td className={classNameInfoTable}>
+                        {patient.idAccount}
+                      </td>
+                      <td className={classNameInfoTable}>
+                        {patient.codeAccount}
+                      </td>
+                      <td className={classNameInfoTable}>{patient.username}</td>
+                      <td className={classNameInfoTable}>{patient.password}</td>
+                      <td className={classNameInfoTable}>{patient.idRole}</td>
+                      <td className={classNameInfoTable}>
+                        {patient.dateCreate}
+                      </td>
+                      <td className={classNameInfoTable}>
+                        {patient.dataUpdate}
+                      </td>
+                      <td className={classNameInfoTable}>
+                        {patient.enable ? "Enabled" : "Disabled"}
+                      </td>
+                      <td className={classNameInfoTable}>
+                        {patient.status ? "Active" : "Inactive"}
+                      </td>
+                    </tr>
                   ))}
                 </tbody>
               </table>

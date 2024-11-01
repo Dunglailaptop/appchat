@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "81Lv7Lcx6L0=",
+  "dgSpecHash": "wpej9UwdOWc=",
   "success": true,
-  "projectFilePath": "D:\\Appchar\\appchat\\ServerApi\\ServerApi.csproj",
+  "projectFilePath": "D:\\Appchar\\appchatcloneagin\\appchat\\ServerApi\\ServerApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\CNTT\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\CNTT\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.8\\microsoft.aspnetcore.authentication.jwtbearer.8.0.8.nupkg.sha512",

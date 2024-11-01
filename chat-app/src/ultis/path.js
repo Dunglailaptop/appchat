@@ -4,9 +4,9 @@ const path = {
   LOGIN: "LOGIN",
   ERROR: "ERROR",
   patient: "PATIENT",
-  prescription: "",
-  invoiceoutpatient: "",
-  invoiceinpaient: ""
+  prescription: "PRESCRIPTION",
+  invoiceoutpatient: "INVOICEOUTPATIENT",
+  invoiceinpaient: "INVOICEINPATIENT"
 }
 
 export default path

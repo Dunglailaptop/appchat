@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Appchar\\appchat\\ServerApi\\ServerApi.csproj": {}
+    "D:\\Appchar\\appchatcloneagin\\appchat\\ServerApi\\ServerApi.csproj": {}
   },
   "projects": {
-    "D:\\Appchar\\appchat\\ServerApi\\ServerApi.csproj": {
+    "D:\\Appchar\\appchatcloneagin\\appchat\\ServerApi\\ServerApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Appchar\\appchat\\ServerApi\\ServerApi.csproj",
+        "projectUniqueName": "D:\\Appchar\\appchatcloneagin\\appchat\\ServerApi\\ServerApi.csproj",
         "projectName": "ServerApi",
-        "projectPath": "D:\\Appchar\\appchat\\ServerApi\\ServerApi.csproj",
+        "projectPath": "D:\\Appchar\\appchatcloneagin\\appchat\\ServerApi\\ServerApi.csproj",
         "packagesPath": "C:\\Users\\CNTT\\.nuget\\packages\\",
-        "outputPath": "D:\\Appchar\\appchat\\ServerApi\\obj\\",
+        "outputPath": "D:\\Appchar\\appchatcloneagin\\appchat\\ServerApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\cafe\\DevExpress\\Components\\Offline Packages",

@@ -23,13 +23,18 @@ namespace ServerApi.Controllers
          _timerService = timeService;
       }
 
-      [HttpGet]
-      [Authorize]
+      // [HttpGet]
+      // [Authorize]
       public IActionResult GetAll()
       {
          try
          {
-            return Ok(_AccountRepository.GetAll());
+            ApiResponse apiResponse = new ApiResponse{
+                Message = "200",
+                Success = true,
+                Data =_AccountRepository.GetAll()
+            };
+            return Ok(apiResponse);
 
          }
          catch

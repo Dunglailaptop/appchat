@@ -5,6 +5,9 @@ import { IoMdSettings } from "react-icons/io";
 import { TbLogout2 } from "react-icons/tb";
 import { FaPhotoVideo } from "react-icons/fa";
 import { IoIosImages } from "react-icons/io";
+import { FaAngleRight } from "react-icons/fa6";
+import { FaAngleLeft } from "react-icons/fa";
+import { CiSearch } from "react-icons/ci";
 
 const icon = {
   MdOutlineLibraryMusic,
@@ -14,7 +17,10 @@ const icon = {
   IoMdSettings,
   TbLogout2,
   FaPhotoVideo,
-  IoIosImages 
+  IoIosImages,
+  FaAngleRight,
+  FaAngleLeft,
+  CiSearch 
 }
 
 export default icon
