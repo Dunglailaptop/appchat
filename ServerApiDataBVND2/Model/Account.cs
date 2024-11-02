@@ -16,8 +16,8 @@ namespace ServerApiDataBVND2.Model
        
         public string Password { get; set; }
         public int IdRole { get; set; }
-        public string dateCreate { get; set; }
-        public string dataUpdate { get; set; }
+        public DateTime dateCreate { get; set; }
+        public DateTime dataUpdate { get; set; }
 
         public bool Enable { get; set; }
         public bool status { get; set; }

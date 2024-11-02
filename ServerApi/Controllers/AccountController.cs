@@ -23,9 +23,8 @@ namespace ServerApi.Controllers
          _timerService = timeService;
       }
 
-      // [HttpGet]
-      // [Authorize]
-      public IActionResult GetAll()
+      [HttpGet]
+      public IActionResult GetAlls()
       {
          try
          {

@@ -4,7 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ServerApiDataBVND2.Model;
-using ServerApiDataBVND2.Data;
+
+
 
 namespace ServerApiDataBVND2.Controller
 {
@@ -12,11 +13,21 @@ namespace ServerApiDataBVND2.Controller
     [Route("api/[controller]")]
     public class PatientController : ControllerBase
     {
-    
+        private readonly PatientService _patienService;
+        
+        public PatientController(PatientService PatientService) {
+            _patienService = PatientService;
+        }
+
         [HttpGet("getListPatient")]
         public IActionResult getlistpatient(){
-            List<Account> account = PatientData.instance.showlistdanhmuc();
-            return Ok(account);
+            var Account = _patienService.GetAll();
+            ApiResponse apires = new ApiResponse {
+                 Data = Account,
+                 Message = "200",
+                 Success = true
+            };
+           return Ok(apires);
         }
     }
 }

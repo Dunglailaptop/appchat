@@ -1,34 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Appchar\\appchatcloneagin\\appchat\\ServerApiDataBVND2\\ServerApiDataBVND2.csproj": {}
+    "C:\\Users\\CH2\\Documents\\app\\appchat\\ServerApiDataBVND2\\ServerApiDataBVND2.csproj": {}
   },
   "projects": {
-    "D:\\Appchar\\appchatcloneagin\\appchat\\ServerApiDataBVND2\\ServerApiDataBVND2.csproj": {
+    "C:\\Users\\CH2\\Documents\\app\\appchat\\ServerApiDataBVND2\\ServerApiDataBVND2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Appchar\\appchatcloneagin\\appchat\\ServerApiDataBVND2\\ServerApiDataBVND2.csproj",
+        "projectUniqueName": "C:\\Users\\CH2\\Documents\\app\\appchat\\ServerApiDataBVND2\\ServerApiDataBVND2.csproj",
         "projectName": "ServerApiDataBVND2",
-        "projectPath": "D:\\Appchar\\appchatcloneagin\\appchat\\ServerApiDataBVND2\\ServerApiDataBVND2.csproj",
-        "packagesPath": "C:\\Users\\CNTT\\.nuget\\packages\\",
-        "outputPath": "D:\\Appchar\\appchatcloneagin\\appchat\\ServerApiDataBVND2\\obj\\",
+        "projectPath": "C:\\Users\\CH2\\Documents\\app\\appchat\\ServerApiDataBVND2\\ServerApiDataBVND2.csproj",
+        "packagesPath": "C:\\Users\\CH2\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\CH2\\Documents\\app\\appchat\\ServerApiDataBVND2\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "D:\\cafe\\DevExpress\\Components\\Offline Packages",
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\CNTT\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.2.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\CH2\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "D:\\cafe\\DevExpress\\Components\\System\\Components\\Packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -52,9 +43,17 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.1.35, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.8, )"
+            },
+            "Npgsql": {
+              "target": "Package",
+              "version": "[8.0.5, )"
             },
             "SqlConnection": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -94,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

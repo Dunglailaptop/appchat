@@ -23,23 +23,23 @@ services:
       retries: 5
 
 
-  backend-chatapp:
-    container_name: backend-chatapp
-    image: dungdeveloper777/backend-chatapp
-    build:
-      context: .
-      dockerfile: ServerApi/Dockerfile
-    ports:
-      - 4600:8080
-    depends_on:
-      - DatabasePortgresql
-    environment:
-      - DB_HOST=DatabasePortgresql
-      - DB_NAME=ChatApp
-      - DB_SA_PASSWORD=1234
-      - ConnectionStrings__DefaultConnection=Host=DatabasePortgresql;Port=5432;Database=ChatApp;Username=postgres;Password=1234
-    networks:
-      - webapp
+  # backend-chatapp:
+  #   container_name: backend-chatapp
+  #   image: dungdeveloper777/backend-chatapp
+  #   build:
+  #     context: .
+  #     dockerfile: ServerApi/Dockerfile
+  #   ports:
+  #     - 4600:8080
+  #   depends_on:
+  #     - DatabasePortgresql
+  #   environment:
+  #     - DB_HOST=DatabasePortgresql
+  #     - DB_NAME=ChatApp
+  #     - DB_SA_PASSWORD=1234
+  #     - ConnectionStrings__DefaultConnection=Host=DatabasePortgresql;Port=5432;Database=ChatApp;Username=postgres;Password=1234
+  #   networks:
+  #     - webapp
   # frontend:
   #   container_name: frontends-web-build
   #   image: dungdeveloper777/frontend

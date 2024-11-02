@@ -37,7 +37,7 @@ const DataPatient = () => {
               <div class="flex flex-wrap items-center">
                 <div class="relative w-full px-4 max-w-full flex-grow flex-1">
                   <h3 class="font-semibold text-base text-blueGray-700">
-                    Danh sách tài khoản
+                    Danh sách bệnh nhân
                   </h3>
                 </div>
 
@@ -102,25 +102,31 @@ const DataPatient = () => {
                   {Patientdata.map((patient, index) => (
                     <tr key={index}>
                       <td className={classNameInfoTable}>
-                        {patient.idAccount}
+                        {patient.patient_code}
                       </td>
                       <td className={classNameInfoTable}>
-                        {patient.codeAccount}
+                        {patient.p_name}
                       </td>
-                      <td className={classNameInfoTable}>{patient.username}</td>
-                      <td className={classNameInfoTable}>{patient.password}</td>
-                      <td className={classNameInfoTable}>{patient.idRole}</td>
+                      <td className={classNameInfoTable}>{patient.date_of_birth}</td>
+                      <td className={classNameInfoTable}>{patient.father_name}</td>
+                      <td className={classNameInfoTable}>{patient.mother_name}</td>
                       <td className={classNameInfoTable}>
-                        {patient.dateCreate}
-                      </td>
-                      <td className={classNameInfoTable}>
-                        {patient.dataUpdate}
+                        {patient.father_phone}
                       </td>
                       <td className={classNameInfoTable}>
-                        {patient.enable ? "Enabled" : "Disabled"}
+                        {patient.mother_phone}
                       </td>
                       <td className={classNameInfoTable}>
-                        {patient.status ? "Active" : "Inactive"}
+                        {patient.ethnic_vi_name}
+                      </td>
+                      <td className={classNameInfoTable}>
+                        {patient.vi_nationality}
+                      </td>
+                      <td className={classNameInfoTable}>
+                        {patient.gender}
+                      </td>
+                      <td className={classNameInfoTable}>
+                        {patient.full_address}
                       </td>
                     </tr>
                   ))}
