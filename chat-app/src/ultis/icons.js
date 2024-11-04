@@ -8,6 +8,9 @@ import { IoIosImages } from "react-icons/io";
 import { FaAngleRight } from "react-icons/fa6";
 import { FaAngleLeft } from "react-icons/fa";
 import { CiSearch } from "react-icons/ci";
+import { FaHospitalUser } from "react-icons/fa6";
+import { FaClipboardList } from "react-icons/fa6";
+import { MdLocalHospital } from "react-icons/md";
 
 const icon = {
   MdOutlineLibraryMusic,
@@ -20,7 +23,10 @@ const icon = {
   IoIosImages,
   FaAngleRight,
   FaAngleLeft,
-  CiSearch 
+  CiSearch,
+  FaHospitalUser,
+  FaClipboardList,
+  MdLocalHospital 
 }
 
 export default icon

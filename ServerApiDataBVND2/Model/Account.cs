@@ -23,4 +23,7 @@ namespace ServerApiDataBVND2.Model
         public bool status { get; set; }
 
     }
+    public class recordvalue {
+        public int record_value {get;set;}
+    }
 }

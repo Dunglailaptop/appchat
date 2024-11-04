@@ -8,6 +8,9 @@ const {
   TbLogout2,
   FaPhotoVideo,
   IoIosImages,
+  FaHospitalUser,
+  FaClipboardList,
+  MdLocalHospital
 } = icons;
 
 export const siderbarMenu = [
@@ -18,28 +21,43 @@ export const siderbarMenu = [
   },
   {
     path: "PATIENT",
-    text: "DỮ LIỆU BỆNH NHÂN",
+    text: "BỆNH NHÂN",
     end: true,
-    icons: <HiMiniUserGroup size={24} />,
+    icons: <MdLocalHospital size={24} />,
   },
   {
-    path: "PRESCRIPTION",
-    text: "DỮ LIỆU ĐƠN THUỐC",
-    icons: <IoMdSettings size={24} />,
+    path: "PUBLICPRESCRIPTION",
+    text: "ĐƠN THUỐC",
+    icons: <MdLocalHospital size={24} />,
   },
   {
     path: "INVOICEOUTPATIENT",
-    text: "DỮ LIỆU HÓA ĐƠN NGOẠI TRÚ",
-    icons: <FaPhotoVideo size={24} />,
+    text: "HÓA ĐƠN NGOẠI TRÚ",
+    icons: <MdLocalHospital size={24} />,
   },
   {
     path: "INVOICEINPATIENT",
-    text: "DỮ LIỆU HÓA ĐƠN NỘI TRÚ",
-    icons: <IoIosImages size={24} />,
+    text: "HÓA ĐƠN NỘI TRÚ",
+    icons: <MdLocalHospital size={24} />,
   },
 ];
 
+export const MenuTop = [
+  {
+    path: "PRESCRIPTION",
+    Name: "Toa thuốc"
+  },
+  {
+    path: "PrescriptionDetail",
+    Name: "Chi tiết toa thuốc"
+  }
+]
+
 export const MenuTablePatient = [
+  {
+    Title: "",
+    Name: "STT",
+  },
   {
     Title: "",
     Name: "Mã bệnh nhân",

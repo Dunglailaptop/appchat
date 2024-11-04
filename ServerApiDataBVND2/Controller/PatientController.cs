@@ -20,14 +20,33 @@ namespace ServerApiDataBVND2.Controller
         }
 
         [HttpGet("getListPatient")]
-        public IActionResult getlistpatient(){
-            var Account = _patienService.GetAll();
-            ApiResponse apires = new ApiResponse {
-                 Data = Account,
-                 Message = "200",
-                 Success = true
+        public IActionResult getlistpatient(int record_value, string? keysreach ){
+            IEnumerable<Object> datares;
+
+            if (!string.IsNullOrEmpty(keysreach)) {
+                datares = _patienService.sreach(keysreach);
+            } else {
+                datares = _patienService.GetAll(record_value);
+            }
+           
+            var countdata = _patienService.GetCount();
+
+            // Khởi tạo dataArray với cú pháp đối tượng ẩn danh
+            var dataArray = new
+            {
+                datares = datares,
+                countdata = countdata
             };
-           return Ok(apires);
+
+            ApiResponse apires = new ApiResponse
+            {
+                Data = dataArray,
+                Message = "200",
+                Success = true
+            };
+
+            return Ok(apires);
         }
+        
     }
 }

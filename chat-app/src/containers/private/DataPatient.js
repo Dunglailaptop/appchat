@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import "flowbite";
 import ModalDialog from "../ModalDialog/ModalDialog";
 import { datatest, MenuTablePatient } from "../../ultis/menu";
@@ -7,6 +7,7 @@ import * as api from "../../Apis";
 import { useDispatch, useSelector } from "react-redux";
 import actionTypes from "../../store/actions/actionTypes";
 import * as action from "../../store/actions/ApiDataPatient";
+import { FaSquareTwitter } from "react-icons/fa6";
 
 const { FaAngleRight, FaAngleLeft, CiSearch } = icon;
 
@@ -16,16 +17,28 @@ const classNameInfoTable =
   "border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4";
 
 const DataPatient = () => {
+  const [countcheck, setCountcheck] = useState(0);
+  const [work,setWork] = useState('');
   const dispatch = useDispatch();
-
+  console.log(countcheck)
   // Lấy dữ liệu từ store, sẽ tự động cập nhật mỗi khi store thay đổi
   const Patientdata = useSelector((state) => state.app.banner || []);
-
+  const countdata = useSelector((state) => state.app.countdata || []);
   useEffect(() => {
     // Gọi API và cập nhật store
-    dispatch(action.getdata());
+    dispatch(action.getdata(countcheck,work));
   }, [dispatch]);
-
+   const handlenext = () => {
+      setCountcheck(prevCount => prevCount + 20);
+      dispatch(action.getdata(countcheck,work))
+   }
+   const handleagain = () => {
+    setCountcheck(prevCount => (prevCount > 0 ? prevCount - 20 : prevCount));
+    dispatch(action.getdata(countcheck,work))
+   }
+   const sreach = () => {
+    dispatch(action.getdata(countcheck,work))
+   }
   
 
   return (
@@ -49,6 +62,7 @@ const DataPatient = () => {
                     <a
                       href="#"
                       className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+                      onClick={handleagain}
                     >
                       <span className="sr-only">Previous</span>
                       <FaAngleLeft></FaAngleLeft>
@@ -59,12 +73,13 @@ const DataPatient = () => {
                       aria-current="page"
                       className="relative z-10 inline-flex items-center bg-indigo-600 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
-                      1/1880880
+                      {countcheck}/{countdata}
                     </a>
 
                     <a
                       href="#"
                       className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+                      onClick={handlenext}
                     >
                       <span className="sr-only">Next</span>
                       <FaAngleRight></FaAngleRight>
@@ -75,13 +90,17 @@ const DataPatient = () => {
                   <label class="relative block">
                     <span class="sr-only">Search</span>
                     <span class="absolute inset-y-0 left-0 flex items-center pl-2">
-                      <CiSearch></CiSearch>
+                      <CiSearch 
+                       onClick={sreach}
+                      ></CiSearch>
                     </span>
                     <input
                       class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                       placeholder="Search for anything..."
                       type="text"
                       name="search"
+                      value={work}
+                      onChange={e => setWork(e.target.value)}
                     />
                   </label>
                 </div>
@@ -101,6 +120,9 @@ const DataPatient = () => {
                 <tbody>
                   {Patientdata.map((patient, index) => (
                     <tr key={index}>
+                        <td className={classNameInfoTable}>
+                        {patient.stt}
+                      </td>
                       <td className={classNameInfoTable}>
                         {patient.patient_code}
                       </td>

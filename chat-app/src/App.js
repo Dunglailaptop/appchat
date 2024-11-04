@@ -1,9 +1,9 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
-import { Home, Public, Login, PageError } from "./containers/public";
-import { Prescription,Invoiceinpaient,Invoiceoutpatient,Patient } from "./containers/private";
+import { Home, Public, Login, PageError,PublicPrescription } from "./containers/public";
+import { Prescription, Invoiceinpaient, Invoiceoutpatient, Patient, PrescriptionDetail } from "./containers/private";
 import { Route, Routes } from "react-router";
 import path from "./ultis/path";
 import actionTypes from "./store/actions";
@@ -21,6 +21,10 @@ function App() {
             <Route path={path.ERROR} element={<PageError></PageError>}></Route>
             <Route path={path.patient} element={<Patient></Patient>}></Route>
             <Route path={path.invoiceinpaient} element={<Invoiceinpaient></Invoiceinpaient>}></Route>
+            <Route path={path.PUBLICPRESCRIPTION} element={<PublicPrescription></PublicPrescription>}>
+              <Route path={path.prescription} element={<Prescription></Prescription>}></Route>
+              <Route path={path.PrescriptionDetail} element={<PrescriptionDetail></PrescriptionDetail>}></Route>
+            </Route>
           </Route>
         </Routes>
       </div>

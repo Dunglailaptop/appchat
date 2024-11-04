@@ -13,12 +13,32 @@ public class PatientService
         _connectionString = connectionString;
     }
 
-    public IEnumerable<Object> GetAll()
+    public IEnumerable<Object> GetAll(int record_value)
     {
+        string query = "SELECT * FROM \"patient\" order by stt asc OFFSET @offset LIMIT 20;";
         using (var connection = new NpgsqlConnection(_connectionString))
         {
             connection.Open();
-            return connection.Query<Object>("SELECT * FROM \"patient\" order by stt asc OFFSET 1 LIMIT 20; ");
+            return connection.Query<Object>(query, new {offset = record_value});
+        }
+    }
+
+    public int GetCount() {
+        string query = "SELECT count(*) FROM \"patient\";";
+        using (var connection = new NpgsqlConnection(_connectionString))
+        {
+            connection.Open();
+            return connection.QuerySingle<int>(query);
+        }
+    }
+
+   public IEnumerable<Object> sreach(string keysreach)
+    {
+        string query = "SELECT * FROM \"patient\" WHERE patient_code = @code;";
+        using (var connection = new NpgsqlConnection(_connectionString))
+        {
+            connection.Open();
+            return connection.Query<Object>(query, new { code = keysreach });
         }
     }
 

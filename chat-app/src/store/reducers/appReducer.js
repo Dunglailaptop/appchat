@@ -2,6 +2,7 @@ import actionTypes from "../actions/actionTypes";
 
 const initState = {
   banner: [],
+  countdata: 0,
 };
 
 const appReducer = (state = initState, action) => {
@@ -11,6 +12,7 @@ const appReducer = (state = initState, action) => {
       return {
         ...state,
         banner: action.Patientdata,
+        countdata: action.dataCount
       };
     default:
       return state;
