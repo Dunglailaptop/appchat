@@ -1,7 +1,7 @@
 import React, { useEffect,useState } from "react";
 import "flowbite";
 import ModalDialog from "../ModalDialog/ModalDialog";
-import { datatest, MenuTablePatient } from "../../ultis/menu";
+import { MenuTablePatient } from "../../ultis/Model/Patient";
 import icon from "../../ultis/icons";
 import * as api from "../../Apis";
 import { useDispatch, useSelector } from "react-redux";
