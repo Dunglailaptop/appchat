@@ -126,3 +126,16 @@ C:\Users\ndung\OneDrive\Desktop\AppChat_ver1\appchat_clone\appchat\ServerApiData
 C:\Users\ndung\OneDrive\Desktop\AppChat_ver1\appchat_clone\appchat\ServerApiDataBVND2\obj\Debug\net8.0\ServerApiDataBVND2.pdb
 C:\Users\ndung\OneDrive\Desktop\AppChat_ver1\appchat_clone\appchat\ServerApiDataBVND2\obj\Debug\net8.0\ServerApiDataBVND2.genruntimeconfig.cache
 C:\Users\ndung\OneDrive\Desktop\AppChat_ver1\appchat_clone\appchat\ServerApiDataBVND2\obj\Debug\net8.0\ref\ServerApiDataBVND2.dll
+D:\Appchar\appchatcloneagin\appchat\ServerApiDataBVND2\bin\Debug\net8.0\Dapper.dll
+D:\Appchar\appchatcloneagin\appchat\ServerApiDataBVND2\bin\Debug\net8.0\Npgsql.dll
+D:\Appchar\appchatcloneagin\appchat\ServerApiDataBVND2\bin\Debug\net8.0\SQLConnection.dll
+D:\Appchar\appchatcloneagin\appchat\ServerApiDataBVND2\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+D:\Appchar\appchatcloneagin\appchat\ServerApiDataBVND2\bin\Debug\net8.0\System.Data.SqlClient.dll
+D:\Appchar\appchatcloneagin\appchat\ServerApiDataBVND2\bin\Debug\net8.0\System.Diagnostics.EventLog.dll
+D:\Appchar\appchatcloneagin\appchat\ServerApiDataBVND2\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+D:\Appchar\appchatcloneagin\appchat\ServerApiDataBVND2\bin\Debug\net8.0\runtimes\win-arm64\native\sni.dll
+D:\Appchar\appchatcloneagin\appchat\ServerApiDataBVND2\bin\Debug\net8.0\runtimes\win-x64\native\sni.dll
+D:\Appchar\appchatcloneagin\appchat\ServerApiDataBVND2\bin\Debug\net8.0\runtimes\win-x86\native\sni.dll
+D:\Appchar\appchatcloneagin\appchat\ServerApiDataBVND2\bin\Debug\net8.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\Appchar\appchatcloneagin\appchat\ServerApiDataBVND2\bin\Debug\net8.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\Appchar\appchatcloneagin\appchat\ServerApiDataBVND2\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.dll

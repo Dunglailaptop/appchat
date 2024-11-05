@@ -1329,26 +1329,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ndung\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\Offline Packages": {},
+    "C:\\Users\\CNTT\\.nuget\\packages\\": {},
+    "D:\\cafe\\DevExpress\\Components\\Offline Packages": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ndung\\OneDrive\\Desktop\\AppChat_ver1\\appchat_clone\\appchat\\ServerApiDataBVND2\\ServerApiDataBVND2.csproj",
+      "projectUniqueName": "D:\\Appchar\\appchatcloneagin\\appchat\\ServerApiDataBVND2\\ServerApiDataBVND2.csproj",
       "projectName": "ServerApiDataBVND2",
-      "projectPath": "C:\\Users\\ndung\\OneDrive\\Desktop\\AppChat_ver1\\appchat_clone\\appchat\\ServerApiDataBVND2\\ServerApiDataBVND2.csproj",
-      "packagesPath": "C:\\Users\\ndung\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ndung\\OneDrive\\Desktop\\AppChat_ver1\\appchat_clone\\appchat\\ServerApiDataBVND2\\obj\\",
+      "projectPath": "D:\\Appchar\\appchatcloneagin\\appchat\\ServerApiDataBVND2\\ServerApiDataBVND2.csproj",
+      "packagesPath": "C:\\Users\\CNTT\\.nuget\\packages\\",
+      "outputPath": "D:\\Appchar\\appchatcloneagin\\appchat\\ServerApiDataBVND2\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\Offline Packages",
+        "D:\\cafe\\DevExpress\\Components\\Offline Packages",
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\ndung\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 21.2.config",
+        "C:\\Users\\CNTT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.2.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1356,9 +1356,8 @@
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\System\\Components\\Packages": {},
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
+        "D:\\cafe\\DevExpress\\Components\\System\\Components\\Packages": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1432,7 +1431,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
