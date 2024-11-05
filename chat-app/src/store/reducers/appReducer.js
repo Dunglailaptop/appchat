@@ -14,6 +14,13 @@ const appReducer = (state = initState, action) => {
         banner: action.Patientdata,
         countdata: action.dataCount
       };
+    case actionTypes.GET_PRESCRIPTION:
+      
+      return {
+        ...state,
+        banner: action.Patientdata,
+        countdata: action.dataCount
+      };
     default:
       return state;
   }
