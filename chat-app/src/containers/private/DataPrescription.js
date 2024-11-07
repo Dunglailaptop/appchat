@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "flowbite";
 import ModalDialog from "../ModalDialog/ModalDialog";
-import { datatest, MenuTablePrescription } from "../../ultis/menu";
+import { MenuTablePrescription } from "../../ultis/Model/Prescription";
 import icon from "../../ultis/icons";
 import * as api from "../../Apis";
 import { useDispatch, useSelector } from "react-redux";
@@ -49,7 +49,7 @@ const DataPrescription = () => {
               <div class="flex flex-wrap items-center">
                 <div class="relative w-full px-4 max-w-full flex-grow flex-1">
                   <h3 class="font-semibold text-base text-blueGray-700">
-                    Danh sách bệnh nhân
+                    Danh sách toa thuốc
                   </h3>
                 </div>
 
