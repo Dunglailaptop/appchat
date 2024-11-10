@@ -17,6 +17,7 @@ builder.Services.AddCors(options => {
 builder.Services.AddControllers();
 builder.Services.AddSingleton(new PatientService(connectionString));
 builder.Services.AddSingleton(new PrescriptionService(connectionString));
+builder.Services.AddSingleton(new InvoiceInPatientService(connectionString));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

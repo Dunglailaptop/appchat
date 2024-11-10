@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import actionTypes from "../../store/actions/actionTypes";
 import * as action from "../../store/actions/ApiDataPatient";
 import { FaSquareTwitter } from "react-icons/fa6";
+import Processing from "../ProcessBar/Processing";
 
 const { FaAngleRight, FaAngleLeft, CiSearch } = icon;
 
@@ -15,6 +16,7 @@ const classNameTitleTable =
   "px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left";
 const classNameInfoTable =
   "border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4";
+const classtable = "items-center bg-transparent w-full border-collapse";
 
 const DataPrescription = () => {
   const [countcheck, setCountcheck] = useState(0);
@@ -103,9 +105,9 @@ const DataPrescription = () => {
                 </div>
               </div>
             </div>
-
-            <div class="block w-full overflow-x-auto">
-              <table class="items-center bg-transparent w-full border-collapse">
+            {Patientdata.length == 0 && <Processing />}
+            <div className="block w-full overflow-x-auto">
+              <table className= {Patientdata.length === 0 ? "hidden" : <Processing />}>
                 <thead>
                   <tr>
                     {MenuTablePrescription.map((item) => (

@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import "flowbite";
 import ModalDialog from "../ModalDialog/ModalDialog";
 import { MenuTablePatient } from "../../ultis/Model/Patient";
@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import actionTypes from "../../store/actions/actionTypes";
 import * as action from "../../store/actions/ApiDataPatient";
 import { FaSquareTwitter } from "react-icons/fa6";
+import Processing from "../ProcessBar/Processing";
 
 const { FaAngleRight, FaAngleLeft, CiSearch } = icon;
 
@@ -15,10 +16,10 @@ const classNameTitleTable =
   "px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left";
 const classNameInfoTable =
   "border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4";
-
+const classnametable = "items-center bg-transparent w-full border-collapse";
 const DataPatient = () => {
   const [countcheck, setCountcheck] = useState(0);
-  const [work,setWork] = useState('');
+  const [work, setWork] = useState('');
   const dispatch = useDispatch();
   console.log(countcheck)
   // Lấy dữ liệu từ store, sẽ tự động cập nhật mỗi khi store thay đổi
@@ -26,20 +27,25 @@ const DataPatient = () => {
   const countdata = useSelector((state) => state.app.countdata || []);
   useEffect(() => {
     // Gọi API và cập nhật store
-    dispatch(action.getdata(countcheck,work));
+    dispatch(action.getdata(countcheck, work));
   }, [dispatch]);
-   const handlenext = () => {
-      setCountcheck(prevCount => prevCount + 20);
-      dispatch(action.getdata(countcheck,work))
-   }
-   const handleagain = () => {
+  const handlenext = () => {
+    setCountcheck(prevCount => prevCount + 20);
+    dispatch(action.getdata(countcheck, work))
+  }
+  const handleagain = () => {
     setCountcheck(prevCount => (prevCount > 0 ? prevCount - 20 : prevCount));
-    dispatch(action.getdata(countcheck,work))
-   }
-   const sreach = () => {
-    dispatch(action.getdata(countcheck,work))
-   }
+    dispatch(action.getdata(countcheck, work))
+  }
+  const sreach = () => {
+    dispatch(action.getdata(countcheck, work))
+  }
+  // Giả sử Patientdata là một mảng hoặc tập hợp
+ 
   
+ 
+
+
 
   return (
     <>
@@ -90,8 +96,8 @@ const DataPatient = () => {
                   <label class="relative block">
                     <span class="sr-only">Search</span>
                     <span class="absolute inset-y-0 left-0 flex items-center pl-2">
-                      <CiSearch 
-                       onClick={sreach}
+                      <CiSearch
+                        onClick={sreach}
                       ></CiSearch>
                     </span>
                     <input
@@ -106,9 +112,10 @@ const DataPatient = () => {
                 </div>
               </div>
             </div>
-
+            {Patientdata.length == 0 && <Processing />}
             <div class="block w-full overflow-x-auto">
-              <table class="items-center bg-transparent w-full border-collapse">
+          
+              <table className={Patientdata.length === 0 ? "hidden" : classnametable}>
                 <thead>
                   <tr>
                     {MenuTablePatient.map((item) => (
@@ -120,7 +127,7 @@ const DataPatient = () => {
                 <tbody>
                   {Patientdata.map((patient, index) => (
                     <tr key={index}>
-                        <td className={classNameInfoTable}>
+                      <td className={classNameInfoTable}>
                         {patient.stt}
                       </td>
                       <td className={classNameInfoTable}>
