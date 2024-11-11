@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ServerApiDataBVND2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bc9eb64ba4a55956c91e34192bee3832cff04c9f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+13efd6769c434e431777e7f4bce32733b67ccd75")]
 [assembly: System.Reflection.AssemblyProductAttribute("ServerApiDataBVND2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ServerApiDataBVND2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
