@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "flowbite";
 import ModalDialog from "../ModalDialog/ModalDialog";
-import { MenuTablePrescriptionDetail } from "../../ultis/Model/PrescriptionDetail";
+import { InvoiceInPatient } from "../../ultis/Model/InvoiceIntPatient";
 import icon from "../../ultis/icons";
 import * as api from "../../Apis";
 import { useDispatch, useSelector } from "react-redux";
 import actionTypes from "../../store/actions/actionTypes";
 import * as action from "../../store/actions/ApiDataPatient";
 import { FaSquareTwitter } from "react-icons/fa6";
+import Processing from "../ProcessBar/Processing";
+import Dropdown from "./../Dropdown/Dropdown";
 
 const { FaAngleRight, FaAngleLeft, CiSearch } = icon;
 
@@ -15,29 +17,40 @@ const classNameTitleTable =
   "px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left";
 const classNameInfoTable =
   "border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4";
+const classtable = "items-center bg-transparent w-full border-collapse";
 
-const DataPrescriptionDetail = () => {
+const DataInvoiceInPatient = () => {
   const [countcheck, setCountcheck] = useState(0);
   const [work, setWork] = useState("");
   const dispatch = useDispatch();
   console.log(countcheck);
+  const [selectedValue, setSelectedValue] = useState("");
+
+  const options = [
+    { value: "option1", label: "Chi tiết hóa đơn" },
+    { value: "option2", label: "In hóa đơn (Full)" },
+  ];
+
+  const handleDropdownChange = (event) => {
+    setSelectedValue(event.target.value);
+  };
   // Lấy dữ liệu từ store, sẽ tự động cập nhật mỗi khi store thay đổi
   const Patientdata = useSelector((state) => state.app.banner || []);
   const countdata = useSelector((state) => state.app.countdata || []);
   useEffect(() => {
     // Gọi API và cập nhật store
-    dispatch(action.getListPrescriptionDetail(countcheck, work));
+    dispatch(action.getdataInvoiceInPatients(countcheck, work));
   }, [dispatch]);
   const handlenext = () => {
     setCountcheck((prevCount) => prevCount + 20);
-    dispatch(action.getListPrescriptionDetail(countcheck, work));
+    dispatch(action.getdataInvoiceInPatients(countcheck, work));
   };
   const handleagain = () => {
     setCountcheck((prevCount) => (prevCount > 0 ? prevCount - 20 : prevCount));
-    dispatch(action.getListPrescriptionDetail(countcheck, work));
+    dispatch(action.getdataInvoiceInPatients(countcheck, work));
   };
   const sreach = () => {
-    dispatch(action.getListPrescriptionDetail(countcheck, work));
+    dispatch(action.getdataInvoiceInPatients(countcheck, work));
   };
 
   return (
@@ -49,7 +62,7 @@ const DataPrescriptionDetail = () => {
               <div class="flex flex-wrap items-center">
                 <div class="relative w-full px-4 max-w-full flex-grow flex-1">
                   <h3 class="font-semibold text-base text-blueGray-700">
-                    Danh sách chi tiết toa thuốc
+                    Danh sách hóa đơn nội trú
                   </h3>
                 </div>
 
@@ -103,12 +116,17 @@ const DataPrescriptionDetail = () => {
                 </div>
               </div>
             </div>
-
-            <div class="block w-full overflow-x-auto">
-              <table class="items-center bg-transparent w-full border-collapse">
+            {Patientdata.length == 0 && <Processing />}
+            <div className="block w-full overflow-x-auto">
+              <table
+                className={Patientdata.length === 0 ? "hidden" : <Processing />}
+              >
                 <thead>
                   <tr>
-                    {MenuTablePrescriptionDetail.map((item) => (
+                    <th className={classNameTitleTable}>
+                      <button>check</button>
+                    </th>
+                    {InvoiceInPatient.map((item) => (
                       <th className={classNameTitleTable}>{item.Name}</th>
                     ))}
                   </tr>
@@ -117,6 +135,7 @@ const DataPrescriptionDetail = () => {
                 <tbody>
                   {Patientdata.map((record, rowIndex) => (
                     <tr key={rowIndex}>
+                      
                       {Object.keys(record).map((field, colIndex) => (
                         <td
                           key={`${rowIndex}-${colIndex}`}
@@ -137,4 +156,4 @@ const DataPrescriptionDetail = () => {
   );
 };
 
-export default DataPrescriptionDetail;
+export default DataInvoiceInPatient;

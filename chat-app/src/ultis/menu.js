@@ -26,7 +26,7 @@ export const siderbarMenu = [
     icons: <MdLocalHospital size={24} />,
   },
   {
-    path: "PUBLICPRESCRIPTION",
+    path: "PUBLICPRESCRIPTION/PRESCRIPTION",
     text: "ĐƠN THUỐC",
     icons: <MdLocalHospital size={24} />,
   },

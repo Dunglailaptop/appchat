@@ -9,7 +9,19 @@ export const MenuTablePatient = [
     },
     {
       Title: "",
+      Name: "Mã Code bệnh nhân",
+    },
+    {
+      Title: "",
+      Name: "vaccination_code",
+    },
+    {
+      Title: "",
       Name: "Tên bệnh nhân",
+    },
+    {
+      Title: "",
+      Name: "Tên bệnh nhân backup",
     },
     {
       Title: "",
