@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import "flowbite";
 import ModalDialog from "../ModalDialog/ModalDialog";
 import { MenuTablePatient } from "../../ultis/Model/Patient";
@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import actionTypes from "../../store/actions/actionTypes";
 import * as action from "../../store/actions/ApiDataPatient";
 import { FaSquareTwitter } from "react-icons/fa6";
+import Processing from "../ProcessBar/Processing";
 
 const { FaAngleRight, FaAngleLeft, CiSearch } = icon;
 
@@ -15,31 +16,31 @@ const classNameTitleTable =
   "px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left";
 const classNameInfoTable =
   "border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4";
-
+const classnametable = "items-center bg-transparent w-full border-collapse";
 const DataPatient = () => {
   const [countcheck, setCountcheck] = useState(0);
-  const [work,setWork] = useState('');
+  const [work, setWork] = useState("");
   const dispatch = useDispatch();
-  console.log(countcheck)
+  console.log(countcheck);
   // Lấy dữ liệu từ store, sẽ tự động cập nhật mỗi khi store thay đổi
   const Patientdata = useSelector((state) => state.app.banner || []);
   const countdata = useSelector((state) => state.app.countdata || []);
   useEffect(() => {
     // Gọi API và cập nhật store
-    dispatch(action.getdata(countcheck,work));
+    dispatch(action.getdata(countcheck, work));
   }, [dispatch]);
-   const handlenext = () => {
-      setCountcheck(prevCount => prevCount + 20);
-      dispatch(action.getdata(countcheck,work))
-   }
-   const handleagain = () => {
-    setCountcheck(prevCount => (prevCount > 0 ? prevCount - 20 : prevCount));
-    dispatch(action.getdata(countcheck,work))
-   }
-   const sreach = () => {
-    dispatch(action.getdata(countcheck,work))
-   }
-  
+  const handlenext = () => {
+    setCountcheck((prevCount) => prevCount + 20);
+    dispatch(action.getdata(countcheck, work));
+  };
+  const handleagain = () => {
+    setCountcheck((prevCount) => (prevCount > 0 ? prevCount - 20 : prevCount));
+    dispatch(action.getdata(countcheck, work));
+  };
+  const sreach = () => {
+    dispatch(action.getdata(countcheck, work));
+  };
+  // Giả sử Patientdata là một mảng hoặc tập hợp
 
   return (
     <>
@@ -90,9 +91,7 @@ const DataPatient = () => {
                   <label class="relative block">
                     <span class="sr-only">Search</span>
                     <span class="absolute inset-y-0 left-0 flex items-center pl-2">
-                      <CiSearch 
-                       onClick={sreach}
-                      ></CiSearch>
+                      <CiSearch onClick={sreach}></CiSearch>
                     </span>
                     <input
                       class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
@@ -100,15 +99,17 @@ const DataPatient = () => {
                       type="text"
                       name="search"
                       value={work}
-                      onChange={e => setWork(e.target.value)}
+                      onChange={(e) => setWork(e.target.value)}
                     />
                   </label>
                 </div>
               </div>
             </div>
-
+            {Patientdata.length == 0 && <Processing />}
             <div class="block w-full overflow-x-auto">
-              <table class="items-center bg-transparent w-full border-collapse">
+              <table
+                className={Patientdata.length === 0 ? "hidden" : classnametable}
+              >
                 <thead>
                   <tr>
                     {MenuTablePatient.map((item) => (
@@ -118,38 +119,16 @@ const DataPatient = () => {
                 </thead>
 
                 <tbody>
-                  {Patientdata.map((patient, index) => (
-                    <tr key={index}>
-                        <td className={classNameInfoTable}>
-                        {patient.stt}
-                      </td>
-                      <td className={classNameInfoTable}>
-                        {patient.patient_code}
-                      </td>
-                      <td className={classNameInfoTable}>
-                        {patient.p_name}
-                      </td>
-                      <td className={classNameInfoTable}>{patient.date_of_birth}</td>
-                      <td className={classNameInfoTable}>{patient.father_name}</td>
-                      <td className={classNameInfoTable}>{patient.mother_name}</td>
-                      <td className={classNameInfoTable}>
-                        {patient.father_phone}
-                      </td>
-                      <td className={classNameInfoTable}>
-                        {patient.mother_phone}
-                      </td>
-                      <td className={classNameInfoTable}>
-                        {patient.ethnic_vi_name}
-                      </td>
-                      <td className={classNameInfoTable}>
-                        {patient.vi_nationality}
-                      </td>
-                      <td className={classNameInfoTable}>
-                        {patient.gender}
-                      </td>
-                      <td className={classNameInfoTable}>
-                        {patient.full_address}
-                      </td>
+                  {Patientdata.map((record, rowIndex) => (
+                    <tr key={rowIndex}>
+                      {Object.keys(record).map((field, colIndex) => (
+                        <td
+                          key={`${rowIndex}-${colIndex}`}
+                          className={classNameInfoTable}
+                        >
+                          {record[field]}
+                        </td>
+                      ))}
                     </tr>
                   ))}
                 </tbody>

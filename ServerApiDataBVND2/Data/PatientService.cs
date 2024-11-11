@@ -42,6 +42,16 @@ public class PatientService
         }
     }
 
+    public IEnumerable<Object> sreachPatientId(string keysreach)
+    {
+        string query = "SELECT * FROM \"patient\" WHERE patient_id = @code;";
+        using (var connection = new NpgsqlConnection(_connectionString))
+        {
+            connection.Open();
+            return connection.Query<Object>(query, new { code = keysreach });
+        }
+    }
+
 
 
 }

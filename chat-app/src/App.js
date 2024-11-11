@@ -25,6 +25,7 @@ function App() {
               <Route path={path.prescription} element={<Prescription></Prescription>}></Route>
               <Route path={path.PrescriptionDetail} element={<PrescriptionDetail></PrescriptionDetail>}></Route>
             </Route>
+            
           </Route>
         </Routes>
       </div>
