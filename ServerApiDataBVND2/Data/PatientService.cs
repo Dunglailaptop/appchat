@@ -34,7 +34,7 @@ public class PatientService
 
    public IEnumerable<Object> sreach(string keysreach)
     {
-        string query = "SELECT * FROM \"patient\" WHERE patient_code = @code;";
+        string query = "SELECT * FROM \"patient\" WHERE patient_id = @code::int;";
         using (var connection = new NpgsqlConnection(_connectionString))
         {
             connection.Open();

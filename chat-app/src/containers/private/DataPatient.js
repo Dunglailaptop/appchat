@@ -25,6 +25,7 @@ const DataPatient = () => {
   // Lấy dữ liệu từ store, sẽ tự động cập nhật mỗi khi store thay đổi
   const Patientdata = useSelector((state) => state.app.banner || []);
   const countdata = useSelector((state) => state.app.countdata || []);
+  const requiredFields = ['patient_id', 'patient_code', 'p_name','gender','date_of_birth'];
   useEffect(() => {
     // Gọi API và cập nhật store
     dispatch(action.getdata(countcheck, work));
@@ -112,6 +113,7 @@ const DataPatient = () => {
               >
                 <thead>
                   <tr>
+                    <th className={classNameTitleTable}>Chi Tiết</th>
                     {MenuTablePatient.map((item) => (
                       <th className={classNameTitleTable}>{item.Name}</th>
                     ))}
@@ -119,9 +121,11 @@ const DataPatient = () => {
                 </thead>
 
                 <tbody>
+                 
                   {Patientdata.map((record, rowIndex) => (
                     <tr key={rowIndex}>
-                      {Object.keys(record).map((field, colIndex) => (
+                      <td  className={classNameInfoTable}><ModalDialog></ModalDialog></td>
+                      {Object.keys(record).filter(field => requiredFields.includes(field)).map((field, colIndex) => (
                         <td
                           key={`${rowIndex}-${colIndex}`}
                           className={classNameInfoTable}
@@ -137,7 +141,7 @@ const DataPatient = () => {
           </div>
         </div>
       </section>
-      <ModalDialog></ModalDialog>
+     
     </>
   );
 };

@@ -52,6 +52,21 @@ export const MenuTop = [
     Name: "Chi tiết toa thuốc"
   }
 ]
+export const MenuTopPrescriptionDetail = [
+  {
+    path: "TabInvoiceOuTPatient",
+    Name: "Hóa đơn ngoại trú"
+  },
+  {
+    path: "TabInvoiceInPatient",
+    Name: "Hóa đơn nội trú"
+  },
+  {
+    path: "TabPrescription",
+    Name: "Toa thuốc"
+  }
+
+]
 
 
 

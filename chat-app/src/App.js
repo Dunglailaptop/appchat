@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Home, Public, Login, PageError,PublicPrescription } from "./containers/public";
 import { Prescription, Invoiceinpaient, Invoiceoutpatient, Patient, PrescriptionDetail } from "./containers/private";
+import { TabInvoiceInPatient,TabPrescription,TabInvoiceOutPatient } from "./containers/TabDetailPrescription";
 import { Route, Routes } from "react-router";
 import path from "./ultis/path";
 import actionTypes from "./store/actions";
@@ -19,8 +20,13 @@ function App() {
             <Route path={path.HOME} element={<Home></Home>}></Route>
             <Route path={path.LOGIN} element={<Login></Login>}></Route>
             <Route path={path.ERROR} element={<PageError></PageError>}></Route>
-            <Route path={path.patient} element={<Patient></Patient>}></Route>
+            <Route path={path.patient} element={<Patient></Patient>}>
+               <Route path={path.TABINVOICEINPATIENT} element={<TabInvoiceInPatient></TabInvoiceInPatient>}></Route>
+               <Route path={path.TABINVOICEOUTPATIENT} element={<TabInvoiceOutPatient></TabInvoiceOutPatient>}></Route>
+               <Route path={path.TABPRESCRIPTION} element={<TabPrescription></TabPrescription>}></Route>
+            </Route>
             <Route path={path.invoiceinpaient} element={<Invoiceinpaient></Invoiceinpaient>}></Route>
+            <Route path={path.invoiceoutpatient} element={<Invoiceoutpatient></Invoiceoutpatient>}></Route>
             <Route path={path.PUBLICPRESCRIPTION} element={<PublicPrescription></PublicPrescription>}>
               <Route path={path.prescription} element={<Prescription></Prescription>}></Route>
               <Route path={path.PrescriptionDetail} element={<PrescriptionDetail></PrescriptionDetail>}></Route>

@@ -8,7 +8,10 @@ const path = {
   prescription: "PRESCRIPTION",
   invoiceoutpatient: "INVOICEOUTPATIENT",
   invoiceinpaient: "INVOICEINPATIENT",
-  PrescriptionDetail: "PrescriptionDetail"
+  PrescriptionDetail: "PrescriptionDetail",
+  TABINVOICEINPATIENT: "TabInvoiceInPatient",
+  TABINVOICEOUTPATIENT: "TabInvoiceOuTPatient",
+  TABPRESCRIPTION: "TabPrescription"
 }
 
 export default path

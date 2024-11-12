@@ -20,14 +20,14 @@ namespace ServerApiDataBVND2.Controller
         }
 
         [HttpGet("getListPatient")]
-        public IActionResult getlistpatient(int record_value, string? keysreach ){
+        public IActionResult getlistpatient(int record_value, string? keysreach){
             IEnumerable<Object> datares;
 
             if (!string.IsNullOrEmpty(keysreach)) {
                 datares = _patienService.sreach(keysreach);
-            } else {
+            } else  {
                 datares = _patienService.GetAll(record_value);
-            }
+            } 
            
             var countdata = _patienService.GetCount();
 
