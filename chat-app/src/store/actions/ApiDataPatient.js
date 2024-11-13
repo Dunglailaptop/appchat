@@ -104,3 +104,56 @@ export const getdataInvoiceInPatients = (record_values,keysreachs) => async (dis
     });
   }
 };
+
+export const getDetailPatient = (patient_id) => async (dispatch) => {
+  try {
+    const response = await api.getDetailPatient(patient_id);
+   console.log(response.data.data)
+    if (response?.data.success == true) {
+      dispatch({
+        type: actionTypes.GET_PATIENT_DETAIL,
+        Patientdata: response.data.data,
+        
+      });
+    } else {
+      dispatch({
+        type: actionTypes.GET_PATIENT_DETAIL,
+        Patientdata: null,
+       
+      });
+    }
+  } catch (error) {
+    dispatch({
+      type: actionTypes.GET_PATIENT_DETAIL,
+      Patientdata: null,
+     
+    });
+  }
+};
+
+export const ListPrescription = (patient_id) => async (dispatch) => {
+  try {
+    const response = await api.ListPrescription(patient_id);
+  
+    if (response?.data.success == true) {
+      dispatch({
+        type: actionTypes.GET_LIST_PRESCRIPTION,
+        Patientdata: response.data.data,
+        
+      });
+    } else {
+      dispatch({
+        type: actionTypes.GET_LIST_PRESCRIPTION,
+        Patientdata: null,
+       
+      });
+    }
+  } catch (error) {
+    dispatch({
+      type: actionTypes.GET_LIST_PRESCRIPTION,
+      Patientdata: null,
+     
+    });
+  }
+};
+

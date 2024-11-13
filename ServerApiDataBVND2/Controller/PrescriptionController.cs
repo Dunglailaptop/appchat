@@ -74,5 +74,15 @@ namespace ServerApiDataBVND2.Controller
 
             return Ok(apires);
         }
+        [HttpGet("GetListPrescriptionInPatient")]
+        public IActionResult GetListPrescriptionInPatient(string keysreach) {
+             IEnumerable<Object> datares = _prescriptionService.sreach(keysreach);
+             ApiResponse dataArray = new ApiResponse{
+                Data = datares,
+                Message = "200",
+                Success = true
+             };
+             return Ok(dataArray);
+        }
     }
 }

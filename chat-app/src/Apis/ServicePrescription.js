@@ -38,4 +38,23 @@ export const getdataPrescriptionDetail = (record_values,keysreachs) => new Promi
      }catch (error){
           reject(error);
      }
+   })
+   
+   export const ListPrescription = (keysreach) => new Promise(async (resolve,reject) => {
+     try {
+          const response = await axios({
+             url: "/api/Prescription/GetListPrescriptionInPatient",
+             method: "get",
+             headers: {
+                  "Content-Type": "application/json" // Đảm bảo đúng Content-Type là JSON
+             },
+             params: {
+                  // Chuyển đổi JSON thành chuỗi
+                  keysreach: keysreach,
+             }
+          })
+          resolve(response)
+     }catch (error){
+          reject(error);
+     }
    }) 

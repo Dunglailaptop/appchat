@@ -25,6 +25,7 @@ const DataPatient = () => {
   // Lấy dữ liệu từ store, sẽ tự động cập nhật mỗi khi store thay đổi
   const Patientdata = useSelector((state) => state.app.banner || []);
   const countdata = useSelector((state) => state.app.countdata || []);
+
   const requiredFields = ['patient_id', 'patient_code', 'p_name','gender','date_of_birth'];
   useEffect(() => {
     // Gọi API và cập nhật store
@@ -41,6 +42,10 @@ const DataPatient = () => {
   const sreach = () => {
     dispatch(action.getdata(countcheck, work));
   };
+
+  const getId = (id) => {
+    dispatch(action.getDetailPatient(id));
+  }
   // Giả sử Patientdata là một mảng hoặc tập hợp
 
   return (
@@ -124,7 +129,7 @@ const DataPatient = () => {
                  
                   {Patientdata.map((record, rowIndex) => (
                     <tr key={rowIndex}>
-                      <td  className={classNameInfoTable}><ModalDialog></ModalDialog></td>
+                      <td onClick={() => getId(record.patient_id)}  className={classNameInfoTable}><ModalDialog></ModalDialog></td>
                       {Object.keys(record).filter(field => requiredFields.includes(field)).map((field, colIndex) => (
                         <td
                           key={`${rowIndex}-${colIndex}`}

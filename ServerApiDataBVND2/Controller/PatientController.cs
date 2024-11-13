@@ -14,21 +14,26 @@ namespace ServerApiDataBVND2.Controller
     public class PatientController : ControllerBase
     {
         private readonly PatientService _patienService;
-        
-        public PatientController(PatientService PatientService) {
+
+        public PatientController(PatientService PatientService)
+        {
             _patienService = PatientService;
         }
 
         [HttpGet("getListPatient")]
-        public IActionResult getlistpatient(int record_value, string? keysreach){
+        public IActionResult getlistpatient(int record_value, string? keysreach)
+        {
             IEnumerable<Object> datares;
 
-            if (!string.IsNullOrEmpty(keysreach)) {
+            if (!string.IsNullOrEmpty(keysreach))
+            {
                 datares = _patienService.sreach(keysreach);
-            } else  {
+            }
+            else
+            {
                 datares = _patienService.GetAll(record_value);
-            } 
-           
+            }
+
             var countdata = _patienService.GetCount();
 
             // Khởi tạo dataArray với cú pháp đối tượng ẩn danh
@@ -47,6 +52,17 @@ namespace ServerApiDataBVND2.Controller
 
             return Ok(apires);
         }
-        
+        [HttpGet("GetListDetail")]
+        public IActionResult GetListDetail(string patient_id)
+        {
+            Object datares = _patienService.sreachPatientId(patient_id);
+            var dataArray = new
+            {
+                Data = datares,
+                Message = "200",
+                Success = true
+            };
+            return Ok(dataArray);
+        }
     }
 }

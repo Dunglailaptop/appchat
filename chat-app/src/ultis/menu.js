@@ -1,4 +1,5 @@
 import icons from "./icons";
+import path from "./path";
 
 const {
   MdOutlineLibraryMusic,
@@ -66,6 +67,33 @@ export const MenuTopPrescriptionDetail = [
     Name: "Toa thuốc"
   }
 
+]
+
+export const PrescriptionInPatient = [
+  {
+     Name: "MÃ TOA"
+  },
+  {
+    Name:"TG KÊ ĐƠN"
+  },
+  {
+    Name:"NGÀY ĐƠN THUỐC"
+  },
+  {
+    Name:"LOẠI TOA"
+  },
+  {
+    Name:"CHUẪN ĐOÁN"
+  },
+  {
+    Name:"BÁC SĨ"
+  },
+  {
+    Name:"HÓA ĐƠN"
+  },
+  {
+    Name:"NGÀY BÁN THUỐC"
+  } 
 ]
 
 

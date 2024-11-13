@@ -1,24 +1,20 @@
 import React from "react";
+import { PrescriptionInPatient } from "../../ultis/menu";
+import Item from "antd/es/list/Item";
 
 const TabPrescription = () => {
   return (
     <>
-       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+      <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th scope="col" className="px-6 py-3">
-                Product name
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Color
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Category
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Price
-              </th>
+              {PrescriptionInPatient.map(Item => (
+                <th scope="col" className="px-6 py-3">
+                  {Item.Name}
+                </th>
+              ))}
+
               <th scope="col" className="px-6 py-3">
                 <span className="sr-only">Edit</span>
               </th>
@@ -30,7 +26,7 @@ const TabPrescription = () => {
                 scope="row"
                 className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
               >
-                Apple MacBook Pro 17"
+                Apple 
               </th>
               <td className="px-6 py-4">Silver</td>
               <td className="px-6 py-4">Laptop</td>
@@ -49,7 +45,7 @@ const TabPrescription = () => {
                 scope="row"
                 className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
               >
-                Microsoft Surface Pro
+                Microsoft
               </th>
               <td className="px-6 py-4">White</td>
               <td className="px-6 py-4">Laptop PC</td>
@@ -68,7 +64,7 @@ const TabPrescription = () => {
                 scope="row"
                 className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
               >
-                Magic Mouse 2
+                Magic
               </th>
               <td className="px-6 py-4">Black</td>
               <td className="px-6 py-4">Accessories</td>

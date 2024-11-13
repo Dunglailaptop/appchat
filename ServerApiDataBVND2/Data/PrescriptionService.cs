@@ -33,7 +33,7 @@ public class PrescriptionService
 
     public IEnumerable<Object> sreach(string keysreach)
     {
-        string query = "SELECT * FROM \"prescription\" WHERE prescription_id = @code;";
+        string query = "SELECT * FROM \"prescription\" WHERE patient_id = @code::int;";
         using (var connection = new NpgsqlConnection(_connectionString))
         {
             connection.Open();
@@ -50,7 +50,7 @@ public class PrescriptionService
         }
     }
     //lấy chi tiết toa thuốc
-     public IEnumerable<Object> GetAllDetail(int record_value)
+    public IEnumerable<Object> GetAllDetail(int record_value)
     {
         string query = "SELECT * FROM \"prescription_details\" order by stt asc OFFSET @offset LIMIT 20;";
         using (var connection = new NpgsqlConnection(_connectionString))
@@ -70,6 +70,25 @@ public class PrescriptionService
     }
 
     public IEnumerable<Object> sreachDetail(string keysreach)
+    {
+        string query = "SELECT * FROM \"prescription_details\" WHERE prescription_id = @code;";
+        using (var connection = new NpgsqlConnection(_connectionString))
+        {
+            connection.Open();
+
+            // Attempt to parse keysreach as an integer
+            if (int.TryParse(keysreach, out int code))
+            {
+                return connection.Query<Object>(query, new { code });
+            }
+            else
+            {
+                throw new ArgumentException("The search key must be a valid integer.");
+            }
+        }
+    }
+    //lấy thông tin chi tiết đơn thuốc
+    public IEnumerable<Object> findPrescriptionDetail(string keysreach)
     {
         string query = "SELECT * FROM \"prescription_details\" WHERE prescription_id = @code;";
         using (var connection = new NpgsqlConnection(_connectionString))
